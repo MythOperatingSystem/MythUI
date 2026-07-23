@@ -1,8 +1,7 @@
 import QtQuick 6.0
 import QtQuick.Layouts 6.0
 import QtQuick.Controls 6.0
-import "../qml" as MythUI
-import "../qml/theme" as Theme
+import MythUI as MythUI
 
 Flickable {
     id: root

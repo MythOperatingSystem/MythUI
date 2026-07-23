@@ -10,7 +10,7 @@ qt_add_qml_module(MythUIDemoApp
     URI MythUIDemo
     VERSION 1.0
     QML_FILES
-        main.qml
+        Main.qml
         Demo.qml
 )
 
