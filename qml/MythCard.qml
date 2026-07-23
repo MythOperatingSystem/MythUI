@@ -1,19 +1,20 @@
+import MythUI
 import QtQuick 6.0
 import QtQuick.Controls 6.0
-import "theme" as Theme
 
 Rectangle {
     id: card
 
     property string cardTitle: ""
+    property string variant: "elevated"
     property bool showHeader: cardTitle !== ""
     property int headerHeight: 56
     property int contentPadding: 24
 
     default property alias content: contentArea.data
 
-    color: Theme.MythColors.elevated
-    border.color: mouseArea.containsMouse ? Qt.rgba(1, 1, 1, 0.15) : Theme.MythColors.borderSubtle
+    color: MythColors.elevated
+    border.color: mouseArea.containsMouse ? Qt.rgba(1, 1, 1, 0.15) : MythColors.borderSubtle
     border.width: 1
     radius: 24
 
@@ -51,16 +52,16 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.leftMargin: card.contentPadding
                 anchors.rightMargin: card.contentPadding
-                color: Theme.MythColors.textPrimary
-                font.family: Theme.MythTypography.uiFont
-                font.pixelSize: Theme.MythTypography.h3Size
-                font.weight: Font.SemiBold
+                color: MythColors.textPrimary
+                font.family: MythTypography.uiFont
+                font.pixelSize: MythTypography.h3Size
+                font.weight: Font.DemiBold
             }
 
             Rectangle {
                 width: parent.width
                 height: 1
-                color: Theme.MythColors.borderSubtle
+                color: MythColors.borderSubtle
                 anchors.bottom: parent.bottom
             }
         }

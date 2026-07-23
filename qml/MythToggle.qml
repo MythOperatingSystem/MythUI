@@ -1,6 +1,6 @@
+import MythUI
 import QtQuick 6.0
 import QtQuick.Controls 6.0
-import "theme" as Theme
 
 Item {
     id: root
@@ -28,8 +28,8 @@ Item {
             width: 48
             height: 26
             radius: 13
-            color: root.checked ? Theme.MythColors.mythCyan : Theme.MythColors.overlay
-            border.color: root.checked ? "transparent" : Theme.MythColors.borderSubtle
+            color: root.checked ? MythColors.mythCyan : MythColors.overlay
+            border.color: root.checked ? "transparent" : MythColors.borderSubtle
             border.width: 1
 
             Behavior on color {
@@ -41,7 +41,7 @@ Item {
                 width: 20
                 height: 20
                 radius: 10
-                color: "#F5F7FF"
+                color: MythColors.textPrimary
                 y: 3
                 x: root.checked ? 25 : 3
 
@@ -69,9 +69,9 @@ Item {
             id: label
             text: root.labelText
             visible: root.labelText !== ""
-            color: Theme.MythColors.textPrimary
-            font.family: Theme.MythTypography.uiFont
-            font.pixelSize: Theme.MythTypography.bodySize
+            color: MythColors.textPrimary
+            font.family: MythTypography.uiFont
+            font.pixelSize: MythTypography.bodySize
             anchors.verticalCenter: parent.verticalCenter
             
             MouseArea {

@@ -13,6 +13,15 @@ find_package(Qt6 REQUIRED COMPONENTS Quick Qml)
 
 qt_standard_project_setup()
 
+# Set singletons explicitly
+set_source_files_properties(
+    qml/theme/MythColors.qml
+    qml/theme/MythTypography.qml
+    qml/theme/MythSpacing.qml
+    qml/theme/MythMotion.qml
+    PROPERTIES QT_QML_SINGLETON_TYPE TRUE
+)
+
 # MythUI QML Module
 qt_add_qml_module(MythUI
     URI MythUI
@@ -21,6 +30,13 @@ qt_add_qml_module(MythUI
     QML_FILES
         qml/MythButton.qml
         qml/MythCard.qml
+        examples/pages/AdvancedComponentsPage.qml
+        examples/pages/PageBadge.qml
+        examples/pages/PageH1.qml
+        examples/pages/PageSub.qml
+        examples/pages/SectionTag.qml
+        examples/pages/Glass.qml
+        qml/MythGridBackground.qml
         qml/MythWindow.qml
         qml/MythDialog.qml
         qml/MythNotification.qml
@@ -29,6 +45,7 @@ qt_add_qml_module(MythUI
         qml/MythSlider.qml
         qml/MythProgressBar.qml
         qml/MythToolTip.qml
+        qml/MythBadge.qml
         qml/theme/MythColors.qml
         qml/theme/MythTypography.qml
         qml/theme/MythSpacing.qml

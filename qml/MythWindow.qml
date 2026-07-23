@@ -1,6 +1,6 @@
+import MythUI
 import QtQuick 6.0
 import QtQuick.Controls 6.0
-import "theme" as Theme
 
 Rectangle {
     id: rootWindow
@@ -11,8 +11,10 @@ Rectangle {
 
     default property alias content: contentArea.data
 
-    color: Theme.MythColors.surface
-    radius: 24
+    color: MythColors.surface
+    radius: MythSpacing.radiusWindow
+    border.color: MythColors.borderSubtle
+    border.width: 1
 
     Column {
         anchors.fill: parent
@@ -22,7 +24,7 @@ Rectangle {
             width: parent.width
             height: rootWindow.showTitleBar ? rootWindow.titleBarHeight : 0
             visible: rootWindow.showTitleBar
-            color: Theme.MythColors.elevated
+            color: MythColors.elevated
             
             radius: rootWindow.radius
             Rectangle {
@@ -35,9 +37,9 @@ Rectangle {
             Text {
                 anchors.centerIn: parent
                 text: rootWindow.windowTitle
-                font.family: Theme.MythTypography.uiFont
-                font.pixelSize: Theme.MythTypography.bodySize
-                color: Theme.MythColors.textSecondary
+                font.family: MythTypography.uiFont
+                font.pixelSize: MythTypography.bodyMedium
+                color: MythColors.textSecondary
             }
 
             Row {
@@ -50,7 +52,7 @@ Rectangle {
                     width: 12
                     height: 12
                     radius: 6
-                    color: minHover.containsMouse ? Qt.lighter("#9CA3AF", 1.2) : "#9CA3AF"
+                    color: minHover.containsMouse ? Qt.lighter(MythColors.textSecondary, 1.2) : MythColors.textSecondary
                     Behavior on color { ColorAnimation { duration: 150 } }
                     MouseArea { id: minHover; anchors.fill: parent; hoverEnabled: true }
                 }
@@ -59,7 +61,7 @@ Rectangle {
                     width: 12
                     height: 12
                     radius: 6
-                    color: maxHover.containsMouse ? Qt.lighter("#9CA3AF", 1.2) : "#9CA3AF"
+                    color: maxHover.containsMouse ? Qt.lighter(MythColors.textSecondary, 1.2) : MythColors.textSecondary
                     Behavior on color { ColorAnimation { duration: 150 } }
                     MouseArea { id: maxHover; anchors.fill: parent; hoverEnabled: true }
                 }
@@ -68,7 +70,7 @@ Rectangle {
                     width: 12
                     height: 12
                     radius: 6
-                    color: closeHover.containsMouse ? Theme.MythColors.error : "#9CA3AF"
+                    color: closeHover.containsMouse ? MythColors.error : MythColors.textSecondary
                     Behavior on color { ColorAnimation { duration: 150 } }
                     MouseArea { id: closeHover; anchors.fill: parent; hoverEnabled: true }
                 }

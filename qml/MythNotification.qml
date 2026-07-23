@@ -1,7 +1,7 @@
+import MythUI
 import QtQuick 6.0
 import QtQuick.Controls 6.0
 import QtQuick.Layouts 6.0
-import "theme" as Theme
 
 Item {
     id: root
@@ -12,8 +12,8 @@ Item {
     // Position slightly off the top-right
     anchors.top: parent ? parent.top : undefined
     anchors.right: parent ? parent.right : undefined
-    anchors.topMargin: Theme.MythSpacing.lg
-    anchors.rightMargin: Theme.MythSpacing.lg
+    anchors.topMargin: MythSpacing.lg
+    anchors.rightMargin: MythSpacing.lg
     z: 1000
 
     property string message: ""
@@ -67,7 +67,7 @@ Item {
             property: "y"
             from: -100
             to: 0
-            duration: Theme.MythMotion.entrance
+            duration: MythMotion.entrance
             easing.type: Easing.OutCubic
         }
         NumberAnimation {
@@ -75,7 +75,7 @@ Item {
             property: "opacity"
             from: 0
             to: 1
-            duration: Theme.MythMotion.entrance
+            duration: MythMotion.entrance
             easing.type: Easing.OutCubic
         }
         onFinished: {
@@ -90,7 +90,7 @@ Item {
         target: notificationCard
         property: "opacity"
         to: 0
-        duration: Theme.MythMotion.standard
+        duration: MythMotion.standard
         easing.type: Easing.OutCubic
         onFinished: {
             root.showNotification = false;
@@ -102,9 +102,9 @@ Item {
         id: notificationCard
         width: parent.width
         height: parent.height
-        color: Theme.MythColors.elevated
+        color: MythColors.elevated
         radius: 16 // radiusLg
-        border.color: Theme.MythColors.borderSubtle
+        border.color: MythColors.borderSubtle
         border.width: 1
 
         // Left accent border
@@ -116,11 +116,11 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
             color: {
                 switch(root.type) {
-                    case "success": return Theme.MythColors.success;
-                    case "warning": return Theme.MythColors.warning;
-                    case "error": return Theme.MythColors.error;
+                    case "success": return MythColors.success;
+                    case "warning": return MythColors.warning;
+                    case "error": return MythColors.error;
                     case "info": 
-                    default: return Theme.MythColors.mythCyan;
+                    default: return MythColors.mythCyan;
                 }
             }
             radius: 1.5
@@ -140,11 +140,11 @@ Item {
                 Layout.alignment: Qt.AlignVCenter
                 color: {
                     switch(root.type) {
-                        case "success": return Theme.MythColors.success;
-                        case "warning": return Theme.MythColors.warning;
-                        case "error": return Theme.MythColors.error;
+                        case "success": return MythColors.success;
+                        case "warning": return MythColors.warning;
+                        case "error": return MythColors.error;
                         case "info": 
-                        default: return Theme.MythColors.mythCyan;
+                        default: return MythColors.mythCyan;
                     }
                 }
             }
@@ -153,9 +153,9 @@ Item {
                 Layout.fillWidth: true
                 Layout.alignment: Qt.AlignVCenter
                 text: root.message
-                color: Theme.MythColors.textPrimary
-                font.family: Theme.MythTypography.uiFont
-                font.pixelSize: Theme.MythTypography.body
+                color: MythColors.textPrimary
+                font.family: MythTypography.uiFont
+                font.pixelSize: MythTypography.body
                 wrapMode: Text.WordWrap
             }
 
@@ -169,9 +169,9 @@ Item {
                     anchors.centerIn: parent
                     text: "×"
                     font.pixelSize: 20
-                    color: closeMouseArea.containsMouse ? Theme.MythColors.textPrimary : Theme.MythColors.textSecondary
+                    color: closeMouseArea.containsMouse ? MythColors.textPrimary : MythColors.textSecondary
                     font.bold: true
-                    Behavior on color { ColorAnimation { duration: Theme.MythMotion.fast } }
+                    Behavior on color { ColorAnimation { duration: MythMotion.fast } }
                 }
                 
                 MouseArea {

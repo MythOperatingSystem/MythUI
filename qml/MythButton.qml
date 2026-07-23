@@ -1,11 +1,11 @@
+import MythUI
 import QtQuick 6.0
 import QtQuick.Controls 6.0
-import "theme" as Theme
 
 Button {
     id: control
 
-    property string variant: "primary"
+    property string variant: "primary" // primary, secondary, ghost, ai, danger, success
     property string iconSource: ""
     
     implicitHeight: 44
@@ -14,7 +14,7 @@ Button {
 
     opacity: enabled ? 1.0 : 0.4
     Behavior on opacity {
-        NumberAnimation { duration: 250; easing.type: Easing.OutCubic }
+        NumberAnimation { duration: MythMotion.fast; easing.type: Easing.OutCubic }
     }
 
     contentItem: Row {
@@ -32,13 +32,13 @@ Button {
 
         Text {
             text: control.text
-            font.family: Theme.MythTypography.uiFont
-            font.pixelSize: Theme.MythTypography.bodySize
-            font.weight: Font.SemiBold
+            font.family: MythTypography.uiFont
+            font.pixelSize: MythTypography.bodyMedium
+            font.weight: Font.DemiBold
             color: {
-                if (control.variant === "primary") return Theme.MythColors.voidBlack
-                if (control.variant === "danger") return "#FFFFFF"
-                return Theme.MythColors.textPrimary
+                if (control.variant === "primary") return MythColors.voidBlack
+                if (control.variant === "danger" || control.variant === "ai" || control.variant === "success") return "#FFFFFF"
+                return MythColors.textPrimary
             }
             anchors.verticalCenter: parent.verticalCenter
         }
@@ -46,30 +46,39 @@ Button {
 
     background: Rectangle {
         id: bgRect
-        radius: 12
-        border.width: control.variant === "secondary" ? 1 : 0
-        border.color: control.variant === "secondary" ? Theme.MythColors.mythCyan : "transparent"
+        radius: MythSpacing.radiusMd
+        border.width: (control.variant === "secondary" || control.variant === "ai" || control.variant === "success") ? 1 : 0
+        border.color: {
+            if (control.variant === "secondary") return MythColors.borderStrong
+            if (control.variant === "ai") return MythColors.mythPurple
+            if (control.variant === "success") return MythColors.success
+            return "transparent"
+        }
 
         color: {
             if (control.variant === "primary") {
-                return control.pressed ? Qt.darker(Theme.MythColors.mythCyan, 1.2) : Theme.MythColors.mythCyan
+                return control.pressed ? MythColors.cyanPressed : (control.hovered ? MythColors.cyanHover : MythColors.mythCyan)
+            } else if (control.variant === "ai") {
+                return control.pressed ? MythColors.purplePressed : (control.hovered ? MythColors.purpleHover : MythColors.mythPurple)
             } else if (control.variant === "secondary") {
-                return control.pressed ? Qt.lighter(Theme.MythColors.elevated, 1.2) : Theme.MythColors.elevated
+                return control.pressed ? Qt.lighter(MythColors.elevated, 1.2) : (control.hovered ? MythColors.voidBlackHover : MythColors.elevated)
             } else if (control.variant === "danger") {
-                return control.pressed ? Qt.darker(Theme.MythColors.error, 1.2) : Theme.MythColors.error
+                return control.pressed ? Qt.darker(MythColors.error, 1.2) : (control.hovered ? Qt.lighter(MythColors.error, 1.1) : MythColors.error)
+            } else if (control.variant === "success") {
+                return control.pressed ? Qt.darker(MythColors.success, 1.2) : (control.hovered ? Qt.lighter(MythColors.success, 1.1) : MythColors.success)
             } else if (control.variant === "ghost") {
-                return control.pressed ? Qt.rgba(1, 1, 1, 0.1) : (control.hovered ? Qt.rgba(1, 1, 1, 0.05) : "transparent")
+                return control.pressed ? MythColors.borderSubtle : (control.hovered ? MythColors.borderSubtle : "transparent")
             }
-            return Theme.MythColors.mythCyan
+            return MythColors.mythCyan
         }
 
         Behavior on color {
-            ColorAnimation { duration: 250; easing.type: Easing.OutCubic }
+            ColorAnimation { duration: MythMotion.fast; easing.type: Easing.OutCubic }
         }
         
         scale: control.pressed ? 0.98 : (control.hovered ? 1.02 : 1.0)
         Behavior on scale {
-            NumberAnimation { duration: 250; easing.type: Easing.OutCubic }
+            NumberAnimation { duration: MythMotion.fast; easing.type: Easing.OutCubic }
         }
     }
 

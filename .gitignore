@@ -1,4 +1,17 @@
+# Build directory
 build/
-.cache/
+bin/
+*.o
+*.so
+
+# Python & temporary files
+__pycache__/
+*.pyc
+
+# IDE / Editor configs
+.vscode/
+.idea/
 *.user
-*.cmake.user
+
+# Zips or exports
+*.zip

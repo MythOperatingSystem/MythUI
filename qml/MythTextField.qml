@@ -1,6 +1,6 @@
+import MythUI
 import QtQuick 6.0
 import QtQuick.Controls 6.0
-import "theme" as Theme
 
 Item {
     id: root
@@ -27,8 +27,8 @@ Item {
             id: labelItem
             text: root.labelText
             visible: root.labelText !== ""
-            color: Theme.MythColors.textSecondary
-            font.family: Theme.MythTypography.uiFont
+            color: MythColors.textSecondary
+            font.family: MythTypography.uiFont
             font.pixelSize: 11
             font.capitalization: Font.AllUppercase
         }
@@ -37,10 +37,10 @@ Item {
             id: bgRect
             width: parent.width
             height: 44
-            color: Theme.MythColors.elevated
+            color: MythColors.elevated
             radius: 12
             border.width: 1
-            border.color: input.activeFocus ? Theme.MythColors.mythCyan : Theme.MythColors.borderSubtle
+            border.color: input.activeFocus ? MythColors.mythCyan : MythColors.borderSubtle
 
             Behavior on border.color {
                 ColorAnimation { duration: 250; easing.type: Easing.OutCubic }
@@ -51,7 +51,7 @@ Item {
                 anchors.margins: -1
                 radius: 13
                 color: "transparent"
-                border.color: Theme.MythColors.mythCyan
+                border.color: MythColors.mythCyan
                 border.width: 1
                 opacity: input.activeFocus ? 0.3 : 0.0
                 Behavior on opacity {
@@ -65,14 +65,14 @@ Item {
                 anchors.leftMargin: 16
                 anchors.rightMargin: 16
                 verticalAlignment: TextInput.AlignVCenter
-                color: Theme.MythColors.textPrimary
-                font.family: Theme.MythTypography.uiFont
-                font.pixelSize: Theme.MythTypography.bodySize
+                color: MythColors.textPrimary
+                font.family: MythTypography.uiFont
+                font.pixelSize: MythTypography.bodySize
                 enabled: root.enabled
 
                 Text {
                     text: root.placeholderText
-                    color: Theme.MythColors.textDisabled
+                    color: MythColors.textDisabled
                     font: input.font
                     visible: !input.text && !input.activeFocus
                     anchors.verticalCenter: parent.verticalCenter

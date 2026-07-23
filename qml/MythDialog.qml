@@ -1,7 +1,7 @@
+import MythUI
 import QtQuick 6.0
 import QtQuick.Controls 6.0
 import QtQuick.Layouts 6.0
-import "theme" as Theme
 
 Item {
     id: root
@@ -39,21 +39,21 @@ Item {
             target: backdrop
             property: "opacity"
             to: 1.0
-            duration: Theme.MythMotion.entrance
+            duration: MythMotion.entrance
             easing.type: Easing.OutCubic
         }
         NumberAnimation {
             target: dialogCard
             property: "opacity"
             to: 1.0
-            duration: Theme.MythMotion.entrance
+            duration: MythMotion.entrance
             easing.type: Easing.OutCubic
         }
         NumberAnimation {
             target: dialogCard
             property: "scale"
             to: 1.0
-            duration: Theme.MythMotion.entrance
+            duration: MythMotion.entrance
             easing.type: Easing.OutCubic
         }
     }
@@ -106,11 +106,11 @@ Item {
     Rectangle {
         id: dialogCard
         width: 420
-        height: contentLayout.implicitHeight + Theme.MythSpacing.xl * 2
+        height: contentLayout.implicitHeight + MythSpacing.xl * 2
         anchors.centerIn: parent
-        color: Theme.MythColors.elevated
+        color: MythColors.elevated
         radius: 24 // radiusXl
-        border.color: Theme.MythColors.borderSubtle
+        border.color: MythColors.borderSubtle
         border.width: 1
         opacity: 0
         scale: 0.95
@@ -124,17 +124,17 @@ Item {
             Item {
                 Layout.fillWidth: true
                 Layout.topMargin: 32
-                Layout.leftMargin: Theme.MythSpacing.lg
-                Layout.rightMargin: Theme.MythSpacing.lg
+                Layout.leftMargin: MythSpacing.lg
+                Layout.rightMargin: MythSpacing.lg
                 implicitHeight: titleText.implicitHeight
                 
                 Text {
                     id: titleText
                     anchors.fill: parent
                     text: root.dialogTitle
-                    color: Theme.MythColors.textPrimary
-                    font.family: Theme.MythTypography.uiFont
-                    font.pixelSize: Theme.MythTypography.h3
+                    color: MythColors.textPrimary
+                    font.family: MythTypography.uiFont
+                    font.pixelSize: MythTypography.h3
                     font.bold: true
                 }
             }
@@ -142,17 +142,17 @@ Item {
             Item {
                 Layout.fillWidth: true
                 Layout.topMargin: 16
-                Layout.leftMargin: Theme.MythSpacing.lg
-                Layout.rightMargin: Theme.MythSpacing.lg
+                Layout.leftMargin: MythSpacing.lg
+                Layout.rightMargin: MythSpacing.lg
                 implicitHeight: messageText.implicitHeight
                 
                 Text {
                     id: messageText
                     anchors.fill: parent
                     text: root.message
-                    color: Theme.MythColors.textSecondary
-                    font.family: Theme.MythTypography.uiFont
-                    font.pixelSize: Theme.MythTypography.body
+                    color: MythColors.textSecondary
+                    font.family: MythTypography.uiFont
+                    font.pixelSize: MythTypography.body
                     wrapMode: Text.WordWrap
                 }
             }
@@ -163,10 +163,10 @@ Item {
 
             RowLayout {
                 Layout.fillWidth: true
-                Layout.topMargin: Theme.MythSpacing.xl
+                Layout.topMargin: MythSpacing.xl
                 Layout.bottomMargin: 24
-                Layout.leftMargin: Theme.MythSpacing.lg
-                Layout.rightMargin: Theme.MythSpacing.lg
+                Layout.leftMargin: MythSpacing.lg
+                Layout.rightMargin: MythSpacing.lg
                 spacing: 12
                 Layout.alignment: Qt.AlignRight
 
@@ -179,18 +179,18 @@ Item {
                     visible: root.showCancel
                     implicitWidth: cancelTextItem.implicitWidth + 32
                     implicitHeight: 40
-                    color: cancelMouseArea.containsMouse ? Theme.MythColors.overlay : "transparent"
+                    color: cancelMouseArea.containsMouse ? MythColors.overlay : "transparent"
                     radius: 12
                     border.width: cancelMouseArea.containsMouse ? 1 : 0
-                    border.color: Theme.MythColors.borderSubtle
+                    border.color: MythColors.borderSubtle
 
                     Text {
                         id: cancelTextItem
                         anchors.centerIn: parent
                         text: root.cancelText
-                        color: Theme.MythColors.textSecondary
-                        font.family: Theme.MythTypography.uiFont
-                        font.pixelSize: Theme.MythTypography.body
+                        color: MythColors.textSecondary
+                        font.family: MythTypography.uiFont
+                        font.pixelSize: MythTypography.body
                         font.bold: true
                     }
 
@@ -204,7 +204,7 @@ Item {
                         }
                     }
 
-                    Behavior on color { ColorAnimation { duration: Theme.MythMotion.fast } }
+                    Behavior on color { ColorAnimation { duration: MythMotion.fast } }
                 }
 
                 // Confirm Button (Primary / Danger)
@@ -212,17 +212,17 @@ Item {
                     implicitWidth: confirmTextItem.implicitWidth + 32
                     implicitHeight: 40
                     color: root.variant === "danger" 
-                           ? Theme.MythColors.error 
-                           : (confirmMouseArea.containsMouse ? Qt.lighter(Theme.MythColors.mythCyan, 1.1) : Theme.MythColors.mythCyan)
+                           ? MythColors.error 
+                           : (confirmMouseArea.containsMouse ? Qt.lighter(MythColors.mythCyan, 1.1) : MythColors.mythCyan)
                     radius: 12
 
                     Text {
                         id: confirmTextItem
                         anchors.centerIn: parent
                         text: root.confirmText
-                        color: root.variant === "danger" ? Theme.MythColors.textPrimary : Theme.MythColors.voidBlack
-                        font.family: Theme.MythTypography.uiFont
-                        font.pixelSize: Theme.MythTypography.body
+                        color: root.variant === "danger" ? MythColors.textPrimary : MythColors.voidBlack
+                        font.family: MythTypography.uiFont
+                        font.pixelSize: MythTypography.body
                         font.bold: true
                     }
 
@@ -236,7 +236,7 @@ Item {
                         }
                     }
 
-                    Behavior on color { ColorAnimation { duration: Theme.MythMotion.fast } }
+                    Behavior on color { ColorAnimation { duration: MythMotion.fast } }
                 }
             }
         }

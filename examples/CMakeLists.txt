@@ -15,6 +15,26 @@ qt_add_qml_module(MythUIDemoApp
     QML_FILES
         Main.qml
         Demo.qml
+        pages/CoverPage.qml
+        pages/ProductPrinciplesPage.qml
+        pages/BrandPage.qml
+        pages/DesignTokensPage.qml
+        pages/TypographyPage.qml
+        pages/IconographyPage.qml
+        pages/CoreComponentsPage.qml
+        pages/AdvancedComponentsPage.qml
+        pages/BootExperiencePage.qml
+        pages/DesktopShellPage.qml
+        pages/MythCommandPage.qml
+        pages/ControlCenterPage.qml
+        pages/NotificationsPage.qml
+        pages/SystemDialogsPage.qml
+        pages/MythCenterPage.qml
+        pages/MythHubPage.qml
+        pages/MythTerminalPage.qml
+        pages/MythStorePage.qml
+        pages/MythAIPage.qml
+        pages/DeveloperHandoffPage.qml
 )
 
 target_link_libraries(MythUIDemoApp

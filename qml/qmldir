@@ -9,3 +9,4 @@ MythToggle 1.0 MythToggle.qml
 MythSlider 1.0 MythSlider.qml
 MythProgressBar 1.0 MythProgressBar.qml
 MythToolTip 1.0 MythToolTip.qml
+MythBadge 1.0 MythBadge.qml

@@ -1,5 +1,6 @@
 import QtQuick 6.0
 import QtQuick.Window 6.0
+import MythUI 1.0
 
 Window {
     id: root
@@ -7,7 +8,7 @@ Window {
     width: 1280
     height: 860
     title: "MythUI Component Showcase"
-    color: "#0D0E15"
+    color: MythColors.voidBlack
 
     Demo {
         anchors.fill: parent
