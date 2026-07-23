@@ -37,13 +37,16 @@ Reusable UI components:
 - CMake 3.22+
 - C++20 compiler
 
-## Building
+## Building & Running
 
 ```bash
 mkdir build
 cd build
 cmake ..
 cmake --build .
+
+# Run the component showcase demo:
+./examples/MythUIDemoApp
 ```
 
 ## Usage
