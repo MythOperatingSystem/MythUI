@@ -9,6 +9,8 @@ qt_add_executable(MythUIDemoApp
 qt_add_qml_module(MythUIDemoApp
     URI MythUIDemo
     VERSION 1.0
+    DEPENDENCIES
+        MythUI
     QML_FILES
         Main.qml
         Demo.qml

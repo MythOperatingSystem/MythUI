@@ -32,7 +32,6 @@ qt_add_qml_module(MythUI
         qml/theme/MythTypography.qml
         qml/theme/MythSpacing.qml
         qml/theme/MythMotion.qml
-    RESOURCE_PREFIX /MythUI
 )
 
 target_link_libraries(MythUI
