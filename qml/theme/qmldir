@@ -1,0 +1,5 @@
+module MythUI.Theme
+singleton MythColors 1.0 MythColors.qml
+singleton MythTypography 1.0 MythTypography.qml
+singleton MythSpacing 1.0 MythSpacing.qml
+singleton MythMotion 1.0 MythMotion.qml

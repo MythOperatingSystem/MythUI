@@ -1,34 +1,45 @@
 cmake_minimum_required(VERSION 3.22)
 
 project(MythUI
-    VERSION 0.1
+    VERSION 0.1.0
+    DESCRIPTION "MythOS UI Component Library"
     LANGUAGES CXX
 )
 
-
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-
-find_package(Qt6 REQUIRED COMPONENTS
-    Quick
-    Qml
-)
-
+find_package(Qt6 REQUIRED COMPONENTS Quick Qml)
 
 qt_standard_project_setup()
 
-
-qt_add_library(MythUI STATIC)
-
+# MythUI QML Module
+qt_add_qml_module(MythUI
+    URI MythUI
+    VERSION 1.0
+    QML_FILES
+        qml/MythButton.qml
+        qml/MythCard.qml
+        qml/MythWindow.qml
+        qml/MythDialog.qml
+        qml/MythNotification.qml
+        qml/MythTextField.qml
+        qml/MythToggle.qml
+        qml/MythSlider.qml
+        qml/MythProgressBar.qml
+        qml/MythToolTip.qml
+        qml/theme/MythColors.qml
+        qml/theme/MythTypography.qml
+        qml/theme/MythSpacing.qml
+        qml/theme/MythMotion.qml
+    RESOURCE_PREFIX /MythUI
+)
 
 target_link_libraries(MythUI
-    PUBLIC
-    Qt6::Quick
-    Qt6::Qml
+    PRIVATE
+        Qt6::Quick
+        Qt6::Qml
 )
 
-
-target_include_directories(MythUI
-    PUBLIC
-    src
-)
+# Example application
+add_subdirectory(examples)

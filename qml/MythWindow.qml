@@ -1,63 +1,89 @@
 import QtQuick 6.0
-
-
-Rectangle {
-
-
-property string title:
-"Myth Application"
-
-
-color:
-"#12141D"
-
-
-radius:
-28
-
-
+import QtQuick.Controls 6.0
+import "theme" as Theme
 
 Rectangle {
+    id: rootWindow
 
+    property string windowTitle: "Myth Application"
+    property bool showTitleBar: true
+    property int titleBarHeight: 48
 
-height:
-64
+    default property alias content: contentArea.data
 
-width:
-parent.width
+    color: Theme.MythColors.surface
+    radius: 24
 
+    Column {
+        anchors.fill: parent
 
-radius:
-28
+        Rectangle {
+            id: titleBar
+            width: parent.width
+            height: rootWindow.showTitleBar ? rootWindow.titleBarHeight : 0
+            visible: rootWindow.showTitleBar
+            color: Theme.MythColors.elevated
+            
+            radius: rootWindow.radius
+            Rectangle {
+                width: parent.width
+                height: parent.radius
+                anchors.bottom: parent.bottom
+                color: parent.color
+            }
 
+            Text {
+                anchors.centerIn: parent
+                text: rootWindow.windowTitle
+                font.family: Theme.MythTypography.uiFont
+                font.pixelSize: Theme.MythTypography.bodySize
+                color: Theme.MythColors.textSecondary
+            }
 
-color:
-"#171A24"
+            Row {
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.rightMargin: 16
+                spacing: 8
 
+                Rectangle {
+                    width: 12
+                    height: 12
+                    radius: 6
+                    color: minHover.containsMouse ? Qt.lighter("#9CA3AF", 1.2) : "#9CA3AF"
+                    Behavior on color { ColorAnimation { duration: 150 } }
+                    MouseArea { id: minHover; anchors.fill: parent; hoverEnabled: true }
+                }
 
+                Rectangle {
+                    width: 12
+                    height: 12
+                    radius: 6
+                    color: maxHover.containsMouse ? Qt.lighter("#9CA3AF", 1.2) : "#9CA3AF"
+                    Behavior on color { ColorAnimation { duration: 150 } }
+                    MouseArea { id: maxHover; anchors.fill: parent; hoverEnabled: true }
+                }
 
-Text {
+                Rectangle {
+                    width: 12
+                    height: 12
+                    radius: 6
+                    color: closeHover.containsMouse ? Theme.MythColors.error : "#9CA3AF"
+                    Behavior on color { ColorAnimation { duration: 150 } }
+                    MouseArea { id: closeHover; anchors.fill: parent; hoverEnabled: true }
+                }
+            }
+        }
 
-
-anchors.centerIn:
-parent
-
-
-text:
-title
-
-
-color:
-"#F5F7FF"
-
-
-font.pixelSize:
-18
-
-
-}
-
-}
-
-
+        Item {
+            id: contentAreaWrapper
+            width: parent.width
+            height: parent.height - titleBar.height
+            
+            Item {
+                id: contentArea
+                anchors.fill: parent
+            }
+        }
+    }
 }

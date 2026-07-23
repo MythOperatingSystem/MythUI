@@ -1,57 +1,80 @@
 import QtQuick 6.0
-
+import QtQuick.Controls 6.0
+import "theme" as Theme
 
 Rectangle {
+    id: card
 
-    id: root
+    property string cardTitle: ""
+    property bool showHeader: cardTitle !== ""
+    property int headerHeight: 56
+    property int contentPadding: 24
 
+    default property alias content: contentArea.data
 
-    property color background:
-        "#171A24"
+    color: Theme.MythColors.elevated
+    border.color: mouseArea.containsMouse ? Qt.rgba(1, 1, 1, 0.15) : Theme.MythColors.borderSubtle
+    border.width: 1
+    radius: 24
 
+    transform: Translate {
+        y: mouseArea.containsMouse ? -2 : 0
+        Behavior on y {
+            NumberAnimation { duration: 250; easing.type: Easing.OutCubic }
+        }
+    }
 
-    property int radius:
-        24
+    Behavior on border.color {
+        ColorAnimation { duration: 250; easing.type: Easing.OutCubic }
+    }
 
+    MouseArea {
+        id: mouseArea
+        anchors.fill: parent
+        hoverEnabled: true
+        acceptedButtons: Qt.NoButton
+    }
 
-    width: 320
-    height: 180
+    Column {
+        anchors.fill: parent
 
+        Item {
+            id: headerArea
+            width: parent.width
+            height: card.showHeader ? card.headerHeight : 0
+            visible: card.showHeader
 
-    radius: root.radius
+            Text {
+                text: card.cardTitle
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.leftMargin: card.contentPadding
+                anchors.rightMargin: card.contentPadding
+                color: Theme.MythColors.textPrimary
+                font.family: Theme.MythTypography.uiFont
+                font.pixelSize: Theme.MythTypography.h3Size
+                font.weight: Font.SemiBold
+            }
 
-
-    color: root.background
-
-
-    border.color:
-        "#FFFFFF12"
-
-
-    border.width:
-        1
-
-
-
-    layer.enabled: true
-
-
-    layer.effect:
-        DropShadow {
-
-            horizontalOffset: 0
-
-            verticalOffset: 20
-
-            radius: 40
-
-            samples: 32
-
-            color:
-            "#00000066"
-
+            Rectangle {
+                width: parent.width
+                height: 1
+                color: Theme.MythColors.borderSubtle
+                anchors.bottom: parent.bottom
+            }
         }
 
+        Item {
+            id: contentAreaWrapper
+            width: parent.width
+            height: parent.height - headerArea.height
 
-
+            Item {
+                id: contentArea
+                anchors.fill: parent
+                anchors.margins: card.contentPadding
+            }
+        }
+    }
 }
