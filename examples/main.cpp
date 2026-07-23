@@ -6,12 +6,8 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
     
-    // Add import paths for QML module resolution in build directory and embedded resources
-    engine.addImportPath("qrc:/qt/qml");
-    engine.addImportPath("qrc:/");
+    // Add binary directory import path so engine resolves MythUI module from build tree
     engine.addImportPath(app.applicationDirPath() + "/..");
-    engine.addImportPath(app.applicationDirPath() + "/../MythUI");
-    engine.addImportPath(app.applicationDirPath() + "/../qml");
     engine.addImportPath(app.applicationDirPath());
     
     QObject::connect(

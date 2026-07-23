@@ -17,6 +17,7 @@ qt_standard_project_setup()
 qt_add_qml_module(MythUI
     URI MythUI
     VERSION 1.0
+    OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/MythUI"
     QML_FILES
         qml/MythButton.qml
         qml/MythCard.qml

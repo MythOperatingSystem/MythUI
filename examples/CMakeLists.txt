@@ -9,6 +9,7 @@ qt_add_executable(MythUIDemoApp
 qt_add_qml_module(MythUIDemoApp
     URI MythUIDemo
     VERSION 1.0
+    OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/MythUIDemo"
     DEPENDENCIES
         MythUI
     QML_FILES

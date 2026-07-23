@@ -15,8 +15,6 @@ Item {
     property bool showValue: false
     property bool enabled: true
 
-    signal valueChanged(real value)
-
     onValueChanged: {
         if (root.value < from) root.value = from;
         if (root.value > to) root.value = to;
@@ -110,7 +108,6 @@ Item {
                 
                 if (root.value !== finalValue) {
                     root.value = finalValue;
-                    root.valueChanged(root.value);
                 }
             }
 
