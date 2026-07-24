@@ -284,10 +284,21 @@ Item {
                                 // Action Button
                                 MythButton {
                                     id: btn
-                                    variant: modelData.status === "installed" ? "ghost" : modelData.status === "update" ? "secondary" : modelData.status === "installing" ? "ghost" : "primary"
+                                    property bool isAppBusy: packageManager && packageManager.isBusy && packageManager.currentApp === modelData.name
+                                    variant: isAppBusy ? "ghost" : (modelData.status === "installed" ? "ghost" : modelData.status === "update" ? "secondary" : "primary")
                                     size: "sm"
-                                    enabled: modelData.status !== "installing"
-                                    text: modelData.status === "install" ? "Install" : modelData.status === "installed" ? "Open" : modelData.status === "update" ? "Update" : "Installing..."
+                                    enabled: !isAppBusy
+                                    text: isAppBusy ? (packageManager.progressPercent + "%") : (modelData.status === "install" ? "Install" : modelData.status === "installed" ? "Open" : modelData.status === "update" ? "Update" : "Install")
+                                    
+                                    onClicked: {
+                                        if (modelData.status === "installed") {
+                                            if (waylandCompositor) {
+                                                waylandCompositor.launchApplication(modelData.name.toLowerCase());
+                                            }
+                                        } else if (packageManager) {
+                                            packageManager.installPackage(modelData.name, modelData.name.toLowerCase(), modelData.source);
+                                        }
+                                    }
                                 }
                             }
                         }

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=MythOS Desktop Shell
+Comment=Minimal Cyberpunk Desktop Environment
+Exec=/usr/local/bin/MythUIDemoApp
+TryExec=/usr/local/bin/MythUIDemoApp
+Type=Application
+DesktopNames=MythOS
+Keywords=desktop;cyberpunk;qml;

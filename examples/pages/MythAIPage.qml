@@ -243,19 +243,59 @@ Item {
                                         spacing: 4
 
                                         Text {
-                                            text: "⚠ REQUIRES CONFIRMATION"
-                                            font.pixelSize: 11
-                                            font.bold: true
-                                            color: MythColors.warning
-                                        }
-
-                                        Text {
                                             text: "This command modifies user group membership. A logout and login will be required."
                                             font.pixelSize: 12
                                             color: MythColors.textSecondary
                                             wrapMode: Text.WordWrap
                                             Layout.fillWidth: true
                                             Layout.maximumWidth: 400
+                                        }
+                                    }
+                                }
+
+                                // Interactive AI Prompt Input Bar
+                                Rectangle {
+                                    Layout.fillWidth: true
+                                    implicitHeight: 40
+                                    radius: 10
+                                    color: Qt.rgba(1, 1, 1, 0.04)
+                                    border.color: MythColors.borderSubtle
+                                    border.width: 1
+
+                                    RowLayout {
+                                        anchors.fill: parent
+                                        anchors.leftMargin: 12
+                                        anchors.rightMargin: 12
+                                        spacing: 8
+
+                                        Text {
+                                            text: "◈"
+                                            color: MythColors.mythPurple
+                                            font.pixelSize: 14
+                                        }
+
+                                        TextInput {
+                                            id: promptInput
+                                            Layout.fillWidth: true
+                                            font.family: MythTypography.uiFont
+                                            font.pixelSize: 13
+                                            color: MythColors.textPrimary
+                                            selectByMouse: true
+                                            onAccepted: {
+                                                if (aiService && text.length > 0) {
+                                                    aiService.askAI(text);
+                                                    text = "";
+                                                }
+                                            }
+
+                                            Text {
+                                                text: "Ask Myth AI anything..."
+                                                font.family: MythTypography.uiFont
+                                                font.pixelSize: 13
+                                                color: MythColors.textMuted
+                                                visible: promptInput.text === ""
+                                                anchors.verticalCenter: parent.verticalCenter
+                                            }
                                         }
                                     }
                                 }
@@ -309,6 +349,15 @@ Item {
                                     font.pixelSize: 13
                                     font.bold: true
                                     color: "white"
+                                }
+                                MouseArea {
+                                    anchors.fill: parent
+                                    cursorShape: Qt.PointingHandCursor
+                                    onClicked: {
+                                        if (aiService) {
+                                            aiService.executeCommand(cmdText.text);
+                                        }
+                                    }
                                 }
                             }
                         }

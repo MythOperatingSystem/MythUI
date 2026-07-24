@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick Qml)
+find_package(Qt6 REQUIRED COMPONENTS Quick Qml Network)
 
 find_library(UTIL_LIB util)
 
@@ -12,6 +12,12 @@ qt_add_executable(MythUIDemoApp
     ../src/terminalbackend.h
     ../src/systemsettings.cpp
     ../src/systemsettings.h
+    ../src/packagemanager.cpp
+    ../src/packagemanager.h
+    ../src/aiservice.cpp
+    ../src/aiservice.h
+    ../src/waylandcompositor.cpp
+    ../src/waylandcompositor.h
 )
 
 target_include_directories(MythUIDemoApp PRIVATE ../src)
@@ -60,6 +66,7 @@ target_link_libraries(MythUIDemoApp
     PRIVATE
         Qt6::Quick
         Qt6::Qml
+        Qt6::Network
         MythUI
         ${UTIL_LIB}
 )

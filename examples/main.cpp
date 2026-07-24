@@ -5,6 +5,9 @@
 #include "systemmetrics.h"
 #include "terminalbackend.h"
 #include "systemsettings.h"
+#include "packagemanager.h"
+#include "aiservice.h"
+#include "waylandcompositor.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,10 +22,16 @@ int main(int argc, char *argv[])
     MythSystemMetrics systemMetrics;
     MythTerminalBackend terminalBackend;
     MythSystemSettings systemSettings;
+    MythPackageManager packageManager;
+    MythAIService aiService;
+    MythWaylandCompositor waylandCompositor;
 
     engine.rootContext()->setContextProperty("systemMetrics", &systemMetrics);
     engine.rootContext()->setContextProperty("terminalBackend", &terminalBackend);
     engine.rootContext()->setContextProperty("systemSettings", &systemSettings);
+    engine.rootContext()->setContextProperty("packageManager", &packageManager);
+    engine.rootContext()->setContextProperty("aiService", &aiService);
+    engine.rootContext()->setContextProperty("waylandCompositor", &waylandCompositor);
     
     QObject::connect(
         &engine,

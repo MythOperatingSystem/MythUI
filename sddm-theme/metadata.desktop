@@ -1,0 +1,9 @@
+[SddmGreeterTheme]
+Name=MythOS Cyberpunk
+Description=Official Minimal Cyberpunk Login Screen for MythOS
+Author=MythOS Team
+Copyright=Copyright (c) 2026 MythOS Team
+ConfigFile=theme.conf
+Type=sddm-theme
+Version=1.0
+MainScript=Main.qml
