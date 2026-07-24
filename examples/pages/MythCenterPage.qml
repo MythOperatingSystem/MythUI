@@ -110,7 +110,8 @@ Item {
     Component {
         id: appearanceComponent
         ColumnLayout {
-            spacing: 12
+            anchors.fill: parent
+            spacing: 0
             
             Repeater {
                 model: [
@@ -132,8 +133,11 @@ Item {
                     }
 
                     RowLayout {
-                        anchors.fill: parent
-                        anchors.bottomMargin: 1
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height - 1
+                        spacing: 16
                         
                         ColumnLayout {
                             Layout.fillWidth: true
@@ -154,6 +158,7 @@ Item {
                         }
 
                         Loader {
+                            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                             sourceComponent: {
                                 if (modelData.type === "toggle") return toggleComp;
                                 if (modelData.type === "select") return selectComp;
@@ -174,7 +179,8 @@ Item {
     Component {
         id: aiComponent
         ColumnLayout {
-            spacing: 12
+            anchors.fill: parent
+            spacing: 0
             
             Repeater {
                 model: [
@@ -196,8 +202,11 @@ Item {
                     }
 
                     RowLayout {
-                        anchors.fill: parent
-                        anchors.bottomMargin: 1
+                        anchors.left: parent.left
+                        anchors.right: parent.right
+                        anchors.verticalCenter: parent.verticalCenter
+                        height: parent.height - 1
+                        spacing: 16
                         
                         ColumnLayout {
                             Layout.fillWidth: true
@@ -218,6 +227,7 @@ Item {
                         }
 
                         Loader {
+                            Layout.alignment: Qt.AlignRight | Qt.AlignVCenter
                             sourceComponent: {
                                 if (modelData.type === "toggle") return toggleComp;
                                 if (modelData.type === "badge") return badgeComp;

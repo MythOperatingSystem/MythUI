@@ -45,18 +45,40 @@ Item {
                     Layout.fillWidth: true
                     Layout.preferredHeight: 80
                     radius: 16
-                    color: MythColors.mythCyan
+                    color: (systemSettings && systemSettings.wifiEnabled) ? MythColors.mythCyan : Qt.rgba(255,255,255,0.05)
+                    border.color: MythColors.borderSubtle
+                    border.width: 1
                     
                     ColumnLayout {
                         anchors.fill: parent
                         anchors.margins: 16
-                        MythIcon { name: "wifi"; iconColor: MythColors.voidBlack; iconSize: 20 }
+                        MythIcon { 
+                            name: "wifi" 
+                            iconColor: (systemSettings && systemSettings.wifiEnabled) ? MythColors.voidBlack : MythColors.textSecondary 
+                            iconSize: 20 
+                        }
                         Item { Layout.fillHeight: true }
-                        Text { text: "Wi-Fi"; color: MythColors.voidBlack; font.bold: true; font.pixelSize: 13 }
-                        Text { text: "Myth_5G"; color: Qt.rgba(0,0,0,0.7); font.pixelSize: 11 }
+                        Text { 
+                            text: "Wi-Fi" 
+                            color: (systemSettings && systemSettings.wifiEnabled) ? MythColors.voidBlack : MythColors.textPrimary 
+                            font.bold: true
+                            font.pixelSize: 13 
+                        }
+                        Text { 
+                            text: systemSettings ? systemSettings.wifiSSID : "Myth_5G" 
+                            color: (systemSettings && systemSettings.wifiEnabled) ? Qt.rgba(0,0,0,0.7) : MythColors.textSecondary 
+                            font.pixelSize: 11 
+                        }
                     }
                     
-                    MouseArea { anchors.fill: parent }
+                    MouseArea { 
+                        anchors.fill: parent 
+                        onClicked: {
+                            if (systemSettings) {
+                                systemSettings.wifiEnabled = !systemSettings.wifiEnabled;
+                            }
+                        }
+                    }
                 }
                 
                 // Bluetooth
@@ -91,16 +113,15 @@ Item {
                     Layout.fillWidth: true
                     spacing: 12
                     MythIcon { name: "cmd"; iconColor: MythColors.textSecondary; iconSize: 16 }
-                    Rectangle {
+                    MythSlider {
                         Layout.fillWidth: true
-                        Layout.preferredHeight: 6
-                        radius: 3
-                        color: MythColors.surface
-                        Rectangle {
-                            width: parent.width * 0.7
-                            height: parent.height
-                            radius: parent.radius
-                            color: MythColors.mythCyan
+                        value: systemSettings ? systemSettings.brightness : 80
+                        from: 5
+                        to: 100
+                        onValueChanged: {
+                            if (systemSettings && Math.abs(systemSettings.brightness - value) > 1) {
+                                systemSettings.brightness = value;
+                            }
                         }
                     }
                 }
@@ -110,16 +131,15 @@ Item {
                     Layout.fillWidth: true
                     spacing: 12
                     MythIcon { name: "volume"; iconColor: MythColors.textSecondary; iconSize: 16 }
-                    Rectangle {
+                    MythSlider {
                         Layout.fillWidth: true
-                        Layout.preferredHeight: 6
-                        radius: 3
-                        color: MythColors.surface
-                        Rectangle {
-                            width: parent.width * 0.45
-                            height: parent.height
-                            radius: parent.radius
-                            color: MythColors.mythCyan
+                        value: systemSettings ? systemSettings.volume : 75
+                        from: 0
+                        to: 100
+                        onValueChanged: {
+                            if (systemSettings && Math.abs(systemSettings.volume - value) > 1) {
+                                systemSettings.volume = value;
+                            }
                         }
                     }
                 }

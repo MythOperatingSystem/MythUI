@@ -4,32 +4,70 @@ import QtQuick.Layouts
 import MythUI 1.0
 
 Item {
+    id: rootStore
     anchors.fill: parent
 
     ScrollView {
         anchors.fill: parent
         clip: true
+        contentWidth: availableWidth
 
         ColumnLayout {
             width: parent.width
-            spacing: 24
+            spacing: 28
 
-            PageBadge {
-                num: "23"
-                label: "Myth Store"
-            }
+            Item { Layout.preferredHeight: 16 } // Top margin
 
+            // Page Header Section
             ColumnLayout {
+                Layout.leftMargin: 40
+                Layout.rightMargin: 40
                 spacing: 8
 
-                Label {
+                RowLayout {
+                    spacing: 8
+                    
+                    Rectangle {
+                        color: "transparent"
+                        border.color: MythColors.mythCyan
+                        border.width: 1
+                        radius: 4
+                        implicitWidth: badgeNum.implicitWidth + 12
+                        implicitHeight: badgeNum.implicitHeight + 6
+                        Rectangle {
+                            anchors.fill: parent
+                            color: MythColors.mythCyan
+                            opacity: 0.1
+                            radius: 4
+                        }
+                        Text {
+                            id: badgeNum
+                            anchors.centerIn: parent
+                            text: "23"
+                            color: MythColors.mythCyan
+                            font.family: MythTypography.codeFont
+                            font.pixelSize: 10
+                        }
+                    }
+                    
+                    Text {
+                        text: "MYTH STORE"
+                        color: MythColors.textSecondary
+                        font.family: MythTypography.codeFont
+                        font.pixelSize: 10
+                        font.letterSpacing: 1.2
+                    }
+                }
+
+                Text {
                     text: "Myth Store"
                     font.family: MythTypography.uiFont
                     font.pixelSize: MythTypography.h1Size
+                    font.weight: Font.Bold
                     color: MythColors.textPrimary
                 }
 
-                Label {
+                Text {
                     text: "Application management — search, install, update, and verify software."
                     font.family: MythTypography.uiFont
                     font.pixelSize: MythTypography.bodySize
@@ -39,15 +77,16 @@ Item {
                 }
             }
 
-            // Search
+            // Search Bar & Filter Pills
             RowLayout {
                 Layout.fillWidth: true
-                spacing: 12
-                Layout.bottomMargin: 8
+                Layout.leftMargin: 40
+                Layout.rightMargin: 40
+                spacing: 16
 
                 Rectangle {
                     Layout.fillWidth: true
-                    implicitHeight: 40
+                    implicitHeight: 44
                     radius: 12
                     color: Qt.rgba(1, 1, 1, 0.04)
                     border.color: MythColors.borderSubtle
@@ -57,20 +96,30 @@ Item {
                         anchors.fill: parent
                         anchors.leftMargin: 16
                         anchors.rightMargin: 16
-                        spacing: 10
+                        spacing: 12
 
                         MythIcon {
                             name: "search"
-                            iconSize: 16
-                            iconColor: MythColors.textSecondary
+                            iconSize: 18
+                            iconColor: MythColors.mythCyan
                         }
 
-                        Label {
-                            text: "Search applications..."
-                            font.family: MythTypography.uiFont
-                            font.pixelSize: MythTypography.bodySize
-                            color: MythColors.textMuted
+                        TextInput {
+                            id: searchInput
                             Layout.fillWidth: true
+                            font.family: MythTypography.uiFont
+                            font.pixelSize: 14
+                            color: MythColors.textPrimary
+                            selectByMouse: true
+
+                            Text {
+                                text: "Search applications, utilities, packages..."
+                                font.family: MythTypography.uiFont
+                                font.pixelSize: 14
+                                color: MythColors.textMuted
+                                visible: searchInput.text === ""
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
                         }
                     }
                 }
@@ -79,142 +128,168 @@ Item {
                     spacing: 8
                     
                     Repeater {
-                        model: ["All", "Dev", "Design", "Security"]
+                        model: ["All", "Dev", "Design", "Security", "Tools"]
                         
                         MythButton {
                             text: modelData
-                            variant: "secondary"
+                            variant: index === 0 ? "primary" : "secondary"
                             size: "sm"
                         }
                     }
                 }
             }
 
+            // Section Label
+            Text {
+                Layout.leftMargin: 40
+                text: "FEATURED APPLICATIONS"
+                color: MythColors.textSecondary
+                font.family: MythTypography.codeFont
+                font.pixelSize: 10
+                font.letterSpacing: 1.2
+            }
+
+            // Apps Grid — Spacious 2-column layout with no overlaps
             GridLayout {
-                columns: 3
+                columns: 2
                 Layout.fillWidth: true
-                rowSpacing: 14
-                columnSpacing: 14
+                Layout.leftMargin: 40
+                Layout.rightMargin: 40
+                Layout.bottomMargin: 48
+                rowSpacing: 20
+                columnSpacing: 20
 
                 Repeater {
                     model: [
-                        { name: "Neovim", cat: "Development", size: "12.4 MB", source: "Native", verified: true, appColor: MythColors.success, status: "install" },
-                        { name: "Figma Linux", cat: "Design", size: "184 MB", source: "Flatpak", verified: true, appColor: MythColors.purple, status: "installed" },
-                        { name: "Docker", cat: "Development", size: "92 MB", source: "Repository", verified: true, appColor: MythColors.mythCyan, status: "update" },
-                        { name: "Obsidian", cat: "Productivity", size: "110 MB", source: "Flatpak", verified: false, appColor: MythColors.warning, status: "install" },
-                        { name: "WireGuard", cat: "Security", size: "4.2 MB", source: "Native", verified: true, appColor: MythColors.error, status: "install" },
-                        { name: "Blender", cat: "Design", size: "212 MB", source: "Flatpak", verified: true, appColor: MythColors.warning, status: "installing" }
+                        { name: "Neovim", cat: "Development", desc: "Hyperextensible Vim-based text editor built for high speed terminal workflows.", size: "12.4 MB", source: "Native", verified: true, appColor: MythColors.mythCyan, status: "install" },
+                        { name: "Figma Linux", cat: "Design", desc: "Collaborative interface design tool running natively on MythOS with GPU acceleration.", size: "184 MB", source: "Flatpak", verified: true, appColor: MythColors.mythPurple, status: "installed" },
+                        { name: "Docker Desktop", cat: "Development", desc: "Container management dashboard, engine runtime, and image inspector.", size: "92 MB", source: "Repository", verified: true, appColor: MythColors.mythCyan, status: "update" },
+                        { name: "Obsidian", cat: "Productivity", desc: "Knowledge base and markdown note taking system with local graph visualization.", size: "110 MB", source: "Flatpak", verified: false, appColor: MythColors.warning, status: "install" },
+                        { name: "WireGuard", cat: "Security", desc: "Extremely simple yet fast and modern VPN service with state-of-the-art cryptography.", size: "4.2 MB", source: "Native", verified: true, appColor: MythColors.error, status: "install" },
+                        { name: "Blender 3D", cat: "Design", desc: "Open-source 3D creation suite supporting modeling, rendering, and animation.", size: "212 MB", source: "Flatpak", verified: true, appColor: MythColors.warning, status: "installing" }
                     ]
 
                     Glass {
                         Layout.fillWidth: true
                         Layout.preferredWidth: 1
-                        implicitHeight: content.implicitHeight + 44
+                        implicitHeight: cardCol.implicitHeight + 40
 
                         ColumnLayout {
-                            id: content
+                            id: cardCol
                             anchors.fill: parent
-                            anchors.margins: 22
-                            spacing: 14
+                            anchors.margins: 20
+                            spacing: 16
 
+                            // Top Row: App Icon + Titles + Source Badges
                             RowLayout {
                                 Layout.fillWidth: true
-                                spacing: 14
+                                spacing: 16
+                                Layout.alignment: Qt.AlignTop
 
+                                // App Icon
                                 Rectangle {
-                                    width: 48
-                                    height: 48
-                                    radius: 12
-                                    color: Qt.rgba(modelData.appColor.r, modelData.appColor.g, modelData.appColor.b, 0.12)
-                                    border.color: Qt.rgba(modelData.appColor.r, modelData.appColor.g, modelData.appColor.b, 0.25)
+                                    width: 52
+                                    height: 52
+                                    radius: 14
+                                    color: Qt.rgba(modelData.appColor.r, modelData.appColor.g, modelData.appColor.b, 0.15)
+                                    border.color: Qt.rgba(modelData.appColor.r, modelData.appColor.g, modelData.appColor.b, 0.35)
                                     border.width: 1
+                                    Layout.alignment: Qt.AlignTop
 
-                                    Label {
+                                    Text {
                                         anchors.centerIn: parent
                                         text: modelData.name.charAt(0)
-                                        font.pixelSize: 20
-                                        font.weight: Font.DemiBold
+                                        font.pixelSize: 22
+                                        font.weight: Font.Bold
                                         color: modelData.appColor
                                     }
                                 }
 
+                                // Titles & Description
                                 ColumnLayout {
                                     Layout.fillWidth: true
-                                    spacing: 2
-
-                                    Label {
-                                        text: modelData.name
-                                        font.family: MythTypography.uiFont
-                                        font.pixelSize: MythTypography.bodySize
-                                        font.weight: Font.DemiBold
-                                        color: MythColors.textPrimary
-                                    }
-
-                                    Label {
-                                        text: modelData.cat
-                                        font.family: MythTypography.uiFont
-                                        font.pixelSize: MythTypography.captionSize
-                                        color: MythColors.textSecondary
-                                    }
+                                    spacing: 4
 
                                     RowLayout {
-                                        spacing: 6
-                                        Layout.topMargin: 4
+                                        Layout.fillWidth: true
+                                        spacing: 8
 
-                                        MythBadge {
-                                            text: modelData.source
-                                            color: modelData.verified ? MythColors.success : MythColors.warning
+                                        Text {
+                                            text: modelData.name
+                                            font.family: MythTypography.uiFont
+                                            font.pixelSize: 16
+                                            font.weight: Font.Bold
+                                            color: MythColors.textPrimary
                                         }
 
-                                        MythBadge {
-                                            visible: !modelData.verified
-                                            text: "Unverified"
-                                            color: MythColors.warning
+                                        Item { Layout.fillWidth: true }
+
+                                        // Badges
+                                        RowLayout {
+                                            spacing: 6
+                                            MythBadge {
+                                                text: modelData.source
+                                                color: modelData.verified ? MythColors.mythCyan : MythColors.warning
+                                            }
+                                            MythBadge {
+                                                visible: !modelData.verified
+                                                text: "Unverified"
+                                                color: MythColors.warning
+                                            }
                                         }
+                                    }
+
+                                    Text {
+                                        text: modelData.cat
+                                        font.family: MythTypography.codeFont
+                                        font.pixelSize: 11
+                                        color: modelData.appColor
+                                    }
+
+                                    Text {
+                                        Layout.fillWidth: true
+                                        text: modelData.desc
+                                        font.family: MythTypography.uiFont
+                                        font.pixelSize: 12
+                                        color: MythColors.textSecondary
+                                        wrapMode: Text.WordWrap
+                                        maximumLineCount: 2
+                                        elide: Text.ElideRight
+                                        Layout.topMargin: 2
                                     }
                                 }
                             }
 
+                            // Divider
+                            Rectangle {
+                                Layout.fillWidth: true
+                                implicitHeight: 1
+                                color: MythColors.borderSubtle
+                            }
+
+                            // Bottom Action Bar: Size on Left, Install Button on Right
                             RowLayout {
                                 Layout.fillWidth: true
-                                
-                                Label {
-                                    text: modelData.size
+                                Layout.alignment: Qt.AlignVCenter
+
+                                Text {
+                                    text: "SIZE: " + modelData.size
                                     font.family: MythTypography.codeFont
-                                    font.pixelSize: MythTypography.captionSize
+                                    font.pixelSize: 11
                                     color: MythColors.textMuted
-                                    Layout.fillWidth: true
+                                }
+
+                                Item { Layout.fillWidth: true }
+
+                                // Action Button
+                                MythButton {
+                                    id: btn
+                                    variant: modelData.status === "installed" ? "ghost" : modelData.status === "update" ? "secondary" : modelData.status === "installing" ? "ghost" : "primary"
+                                    size: "sm"
+                                    enabled: modelData.status !== "installing"
+                                    text: modelData.status === "install" ? "Install" : modelData.status === "installed" ? "Open" : modelData.status === "update" ? "Update" : "Installing..."
                                 }
                             }
-                        }
-
-                        // Install button absolutely positioned in the bottom right with blurry bg
-                        Rectangle {
-                            anchors.right: parent.right
-                            anchors.bottom: parent.bottom
-                            anchors.margins: 14
-                            color: "transparent"
-                            radius: 8
-                            border.color: Qt.rgba(MythColors.borderSubtle.r, MythColors.borderSubtle.g, MythColors.borderSubtle.b, 0.5)
-                            border.width: 1
-                            
-                            // Fake blur using alpha overlay since MultiEffect might not be imported
-                            Rectangle {
-                                anchors.fill: parent
-                                radius: 8
-                                color: Qt.rgba(MythColors.voidBlack.r, MythColors.voidBlack.g, MythColors.voidBlack.b, 0.4)
-                            }
-                            
-                            MythButton {
-                                variant: modelData.status === "installed" ? "ghost" : modelData.status === "update" ? "secondary" : modelData.status === "installing" ? "ghost" : "primary"
-                                size: "sm"
-                                enabled: modelData.status !== "installing"
-                                text: modelData.status === "install" ? "Install" : modelData.status === "installed" ? "Open" : modelData.status === "update" ? "Update" : "Installing..."
-                                anchors.centerIn: parent
-                            }
-                            
-                            width: 80
-                            height: 32
                         }
                     }
                 }

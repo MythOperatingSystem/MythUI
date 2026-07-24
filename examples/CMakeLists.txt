@@ -2,9 +2,19 @@ cmake_minimum_required(VERSION 3.22)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick Qml)
 
+find_library(UTIL_LIB util)
+
 qt_add_executable(MythUIDemoApp
     main.cpp
+    ../src/systemmetrics.cpp
+    ../src/systemmetrics.h
+    ../src/terminalbackend.cpp
+    ../src/terminalbackend.h
+    ../src/systemsettings.cpp
+    ../src/systemsettings.h
 )
+
+target_include_directories(MythUIDemoApp PRIVATE ../src)
 
 qt_add_qml_module(MythUIDemoApp
     URI MythUIDemo
@@ -51,4 +61,5 @@ target_link_libraries(MythUIDemoApp
         Qt6::Quick
         Qt6::Qml
         MythUI
+        ${UTIL_LIB}
 )

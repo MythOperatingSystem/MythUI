@@ -261,38 +261,56 @@ Item {
                             anchors.rightMargin: 20
                             spacing: 4
 
-                            Repeater {
-                                model: pageRoot.blocks
-                                delegate: Loader {
-                                    Layout.fillWidth: true
-                                    sourceComponent: {
-                                        switch (modelData.type) {
-                                            case "command": return commandComponent;
-                                            case "output": return outputComponent;
-                                            case "error": return errorComponent;
-                                            case "ai": return aiComponent;
-                                            default: return null;
-                                        }
-                                    }
-                                    property var blockData: modelData
-                                }
-                            }
-
-                            // Active prompt line
-                            RowLayout {
+                            ScrollView {
                                 Layout.fillWidth: true
-                                spacing: 0
-                                Text {
-                                    text: "myth@ws ~ $ "
-                                    color: MythColors.mythCyan
-                                    font.family: "JetBrains Mono"
-                                    font.pixelSize: 13
-                                }
-                                Text {
-                                    text: "_"
+                                Layout.preferredHeight: 320
+                                clip: true
+                                contentWidth: availableWidth
+
+                                TextArea {
+                                    id: termOutputText
+                                    width: parent.width
+                                    text: terminalBackend ? terminalBackend.fullOutput : "Welcome to MythOS Terminal (PTY Engine)\n\n$ "
                                     color: MythColors.textPrimary
                                     font.family: "JetBrains Mono"
                                     font.pixelSize: 13
+                                    readOnly: true
+                                    wrapMode: Text.Wrap
+                                    background: null
+                                    selectByMouse: true
+                                    onTextChanged: {
+                                        cursorPosition = text.length;
+                                    }
+                                }
+                            }
+
+                            // Active interactive prompt line
+                            RowLayout {
+                                Layout.fillWidth: true
+                                Layout.preferredHeight: 36
+                                spacing: 8
+
+                                Text {
+                                    text: "myth@mythos $ "
+                                    color: MythColors.mythCyan
+                                    font.family: "JetBrains Mono"
+                                    font.pixelSize: 13
+                                    font.bold: true
+                                }
+
+                                TextInput {
+                                    id: termInput
+                                    Layout.fillWidth: true
+                                    color: MythColors.textPrimary
+                                    font.family: "JetBrains Mono"
+                                    font.pixelSize: 13
+                                    focus: true
+                                    onAccepted: {
+                                        if (terminalBackend && text.length > 0) {
+                                            terminalBackend.sendInput(text + "\n");
+                                            text = "";
+                                        }
+                                    }
                                 }
                             }
                         }

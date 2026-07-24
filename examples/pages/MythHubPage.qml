@@ -104,14 +104,14 @@ Item {
                     Layout.fillWidth: true
 
                     Repeater {
-                        model: ListModel {
-                            ListElement { label: "CPU"; val: 34; colorRef: "cyan"; unit: "%" }
-                            ListElement { label: "GPU"; val: 22; colorRef: "purple"; unit: "%" }
-                            ListElement { label: "Memory"; val: 61; colorRef: "warning"; unit: "%" }
-                            ListElement { label: "Storage"; val: 78; colorRef: "success"; unit: "%" }
-                            ListElement { label: "Network"; val: 312; colorRef: "cyan"; unit: "Mbps" }
-                            ListElement { label: "Temp"; val: 54; colorRef: "error"; unit: "°C" }
-                        }
+                        model: [
+                            { label: "CPU", val: Math.round(systemMetrics ? systemMetrics.cpuUsage : 34), colorRef: "cyan", unit: "%" },
+                            { label: "GPU", val: 18, colorRef: "purple", unit: "%" },
+                            { label: "Memory", val: Math.round(systemMetrics ? systemMetrics.ramUsagePercent : 61), colorRef: "warning", unit: "%" },
+                            { label: "Storage", val: 42, colorRef: "success", unit: "%" },
+                            { label: "Network RX", val: Math.round(systemMetrics ? systemMetrics.netRxKbps : 120), colorRef: "cyan", unit: "Kbps" },
+                            { label: "Network TX", val: Math.round(systemMetrics ? systemMetrics.netTxKbps : 45), colorRef: "purple", unit: "Kbps" }
+                        ]
 
                         Rectangle {
                             Layout.fillWidth: true
@@ -128,7 +128,7 @@ Item {
                                 RowLayout {
                                     Layout.fillWidth: true
                                     Text {
-                                        text: model.label
+                                        text: modelData.label
                                         font.pixelSize: 13
                                         color: MythColors.textSecondary
                                         Layout.fillWidth: true
@@ -139,14 +139,14 @@ Item {
                                         Rectangle {
                                             anchors.fill: parent
                                             radius: 4
-                                            color: root.getColor(model.colorRef)
+                                            color: root.getColor(modelData.colorRef)
                                             opacity: 0.2
                                         }
                                         Text {
                                             id: unitText
                                             anchors.centerIn: parent
-                                            text: model.unit
-                                            color: root.getColor(model.colorRef)
+                                            text: modelData.unit
+                                            color: root.getColor(modelData.colorRef)
                                             font.pixelSize: 11
                                             font.weight: Font.Medium
                                         }
@@ -154,11 +154,11 @@ Item {
                                 }
 
                                 Text {
-                                    text: model.val
+                                    text: modelData.val
                                     font.pixelSize: 28
                                     font.weight: Font.Bold
                                     font.letterSpacing: -0.5
-                                    color: root.getColor(model.colorRef)
+                                    color: root.getColor(modelData.colorRef)
                                     Layout.fillWidth: true
                                 }
 
@@ -167,9 +167,9 @@ Item {
                                     Layout.preferredHeight: 32
                                     onPaint: {
                                         var ctx = getContext("2d");
-                                        var c = root.getColor(model.colorRef);
+                                        var c = root.getColor(modelData.colorRef);
                                         
-                                        var val = model.val;
+                                        var val = modelData.val;
                                         // Normalize graph value to a max of 100 for drawing purposes (so network 312 doesn't fly off screen)
                                         var drawVal = Math.min(val, 100);
                                         var scaleX = width / 200.0;

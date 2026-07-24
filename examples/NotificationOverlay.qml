@@ -8,68 +8,83 @@ Item {
     anchors.fill: parent
     
     MythCard {
-        width: 320
-        height: 72
+        width: 440
+        height: 84
+        contentPadding: 12
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 56
-        color: Qt.rgba(MythColors.elevated.r, MythColors.elevated.g, MythColors.elevated.b, 0.65)
-        border.color: Qt.rgba(MythColors.mythPurple.r, MythColors.mythPurple.g, MythColors.mythPurple.b, 0.3)
+        color: Qt.rgba(MythColors.elevated.r, MythColors.elevated.g, MythColors.elevated.b, 0.85)
+        border.color: Qt.rgba(MythColors.mythPurple.r, MythColors.mythPurple.g, MythColors.mythPurple.b, 0.4)
         border.width: 1
         radius: 16
         
-
-        
         RowLayout {
             anchors.fill: parent
-            anchors.margins: 12
-            spacing: 12
+            anchors.margins: 8
+            spacing: 14
             
             Rectangle {
-                width: 40
-                height: 40
-                radius: 20
+                width: 44
+                height: 44
+                radius: 22
                 color: Qt.rgba(MythColors.mythPurple.r, MythColors.mythPurple.g, MythColors.mythPurple.b, 0.2)
+                border.color: Qt.rgba(MythColors.mythPurple.r, MythColors.mythPurple.g, MythColors.mythPurple.b, 0.4)
+                border.width: 1
                 
                 MythIcon {
                     anchors.centerIn: parent
                     name: "ai"
                     iconColor: MythColors.mythPurple
-                    iconSize: 20
+                    iconSize: 22
                 }
             }
             
             ColumnLayout {
                 Layout.fillWidth: true
-                spacing: 2
+                spacing: 3
                 
                 RowLayout {
                     Layout.fillWidth: true
-                    Text { text: "Myth AI"; color: MythColors.textPrimary; font.bold: true; font.pixelSize: 13 }
+                    Text { 
+                        text: "Myth AI"
+                        color: MythColors.textPrimary
+                        font.family: MythTypography.uiFont
+                        font.bold: true
+                        font.pixelSize: 13 
+                    }
                     Item { Layout.fillWidth: true }
-                    Text { text: "Just now"; color: MythColors.textSecondary; font.pixelSize: 10 }
+                    Text { 
+                        text: "Just now"
+                        color: MythColors.textSecondary
+                        font.family: MythTypography.uiFont
+                        font.pixelSize: 11 
+                    }
                 }
                 
                 Text {
                     Layout.fillWidth: true
                     text: "Background optimization complete. System memory usage reduced by 450MB."
                     color: MythColors.textSecondary
-                    font.pixelSize: 11
+                    font.family: MythTypography.uiFont
+                    font.pixelSize: 12
                     wrapMode: Text.WordWrap
-                    lineHeight: 1.2
+                    maximumLineCount: 2
+                    elide: Text.ElideRight
                 }
             }
             
             Text {
                 text: "✕"
                 color: MythColors.textSecondary
-                font.pixelSize: 12
+                font.pixelSize: 14
                 Layout.alignment: Qt.AlignTop
-                Layout.topMargin: 4
+                Layout.topMargin: 2
                 
                 MouseArea {
                     anchors.fill: parent
                     anchors.margins: -8
+                    cursorShape: Qt.PointingHandCursor
                     onClicked: overlay.parent.parent.showNotification = false
                 }
             }
