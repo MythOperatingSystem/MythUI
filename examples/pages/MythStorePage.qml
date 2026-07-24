@@ -14,7 +14,7 @@ Item {
             width: parent.width
             spacing: 24
 
-            MythPageBadge {
+            PageBadge {
                 num: "23"
                 label: "Myth Store"
             }
@@ -24,13 +24,15 @@ Item {
 
                 Label {
                     text: "Myth Store"
-                    font: MythTypography.h1
+                    font.family: MythTypography.uiFont
+                    font.pixelSize: MythTypography.h1Size
                     color: MythColors.textPrimary
                 }
 
                 Label {
                     text: "Application management — search, install, update, and verify software."
-                    font: MythTypography.body
+                    font.family: MythTypography.uiFont
+                    font.pixelSize: MythTypography.bodySize
                     color: MythColors.textSecondary
                     Layout.fillWidth: true
                     wrapMode: Text.WordWrap
@@ -47,7 +49,7 @@ Item {
                     Layout.fillWidth: true
                     implicitHeight: 40
                     radius: 12
-                    color: "rgba(255,255,255,0.04)"
+                    color: Qt.rgba(1, 1, 1, 0.04)
                     border.color: MythColors.borderSubtle
                     border.width: 1
 
@@ -58,14 +60,15 @@ Item {
                         spacing: 10
 
                         MythIcon {
-                            name: "Search"
-                            size: 16
-                            color: MythColors.textSecondary
+                            name: "search"
+                            iconSize: 16
+                            iconColor: MythColors.textSecondary
                         }
 
                         Label {
                             text: "Search applications..."
-                            font: MythTypography.body
+                            font.family: MythTypography.uiFont
+                            font.pixelSize: MythTypography.bodySize
                             color: MythColors.textMuted
                             Layout.fillWidth: true
                         }
@@ -103,7 +106,7 @@ Item {
                         { name: "Blender", cat: "Design", size: "212 MB", source: "Flatpak", verified: true, appColor: MythColors.warning, status: "installing" }
                     ]
 
-                    MythGlass {
+                    Glass {
                         Layout.fillWidth: true
                         Layout.preferredWidth: 1
                         implicitHeight: content.implicitHeight + 44
@@ -122,8 +125,8 @@ Item {
                                     width: 48
                                     height: 48
                                     radius: 12
-                                    color: Qt.alpha(modelData.appColor, 0.12)
-                                    border.color: Qt.alpha(modelData.appColor, 0.25)
+                                    color: Qt.rgba(modelData.appColor.r, modelData.appColor.g, modelData.appColor.b, 0.12)
+                                    border.color: Qt.rgba(modelData.appColor.r, modelData.appColor.g, modelData.appColor.b, 0.25)
                                     border.width: 1
 
                                     Label {
@@ -141,13 +144,16 @@ Item {
 
                                     Label {
                                         text: modelData.name
-                                        font: MythTypography.bodyStrong
+                                        font.family: MythTypography.uiFont
+                                        font.pixelSize: MythTypography.bodySize
+                                        font.weight: Font.DemiBold
                                         color: MythColors.textPrimary
                                     }
 
                                     Label {
                                         text: modelData.cat
-                                        font: MythTypography.caption
+                                        font.family: MythTypography.uiFont
+                                        font.pixelSize: MythTypography.captionSize
                                         color: MythColors.textSecondary
                                     }
 
@@ -174,7 +180,8 @@ Item {
                                 
                                 Label {
                                     text: modelData.size
-                                    font: MythTypography.mono
+                                    font.family: MythTypography.codeFont
+                                    font.pixelSize: MythTypography.captionSize
                                     color: MythColors.textMuted
                                     Layout.fillWidth: true
                                 }
@@ -188,13 +195,14 @@ Item {
                             anchors.margins: 14
                             color: "transparent"
                             radius: 8
-                            border.color: Qt.alpha(MythColors.borderSubtle, 0.5)
+                            border.color: Qt.rgba(MythColors.borderSubtle.r, MythColors.borderSubtle.g, MythColors.borderSubtle.b, 0.5)
+                            border.width: 1
                             
                             // Fake blur using alpha overlay since MultiEffect might not be imported
                             Rectangle {
                                 anchors.fill: parent
                                 radius: 8
-                                color: Qt.alpha(MythColors.voidBlack, 0.4)
+                                color: Qt.rgba(MythColors.voidBlack.r, MythColors.voidBlack.g, MythColors.voidBlack.b, 0.4)
                             }
                             
                             MythButton {

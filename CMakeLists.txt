@@ -46,6 +46,7 @@ qt_add_qml_module(MythUI
         qml/MythProgressBar.qml
         qml/MythToolTip.qml
         qml/MythBadge.qml
+        qml/MythIcon.qml
         qml/theme/MythColors.qml
         qml/theme/MythTypography.qml
         qml/theme/MythSpacing.qml

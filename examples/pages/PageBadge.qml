@@ -17,15 +17,16 @@ RowLayout {
         Text {
             anchors.centerIn: parent
             text: num
-            color: MythColors.cyan
-            font: MythTypography.mono
+            color: MythColors.mythCyan
+            font.family: MythTypography.codeFont
             font.pixelSize: 11
         }
     }
     
     Text {
         text: label
-        color: MythColors.cyan
-        font: MythTypography.label
+        color: MythColors.mythCyan
+        font.family: MythTypography.uiFont
+        font.pixelSize: MythTypography.labelSize
     }
 }

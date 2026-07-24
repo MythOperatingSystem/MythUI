@@ -33,28 +33,28 @@ Item {
                         anchors.centerIn: parent
                         text: "08"
                         color: MythColors.cyan
-                        font: MythTypography.caption
+                        font.pixelSize: MythTypography.caption
                         font.bold: true
                     }
                 }
                 Text {
                     text: "Advanced Components"
                     color: MythColors.cyan
-                    font: MythTypography.caption
+                    font.pixelSize: MythTypography.caption
                     font.letterSpacing: 1.2
                 }
             }
 
             Text {
                 text: "Advanced Components"
-                font: MythTypography.h1
+                font.pixelSize: MythTypography.h1
                 color: MythColors.text
                 Layout.fillWidth: true
             }
 
             Text {
                 text: "MythWindow, MythSidebar, MythTable, and MythChart."
-                font: MythTypography.body
+                font.pixelSize: MythTypography.body
                 color: MythColors.textMuted
                 Layout.fillWidth: true
                 Layout.bottomMargin: 16
@@ -63,7 +63,7 @@ Item {
             // SectionTag: MythWindow — Standard
             Text {
                 text: "MythWindow — Standard"
-                font: MythTypography.caption
+                font.pixelSize: MythTypography.caption
                 color: MythColors.text2
                 Layout.fillWidth: true
                 Layout.topMargin: 16
@@ -212,7 +212,7 @@ Item {
             // SectionTag: MythTable — System Processes
             Text {
                 text: "MythTable — System Processes"
-                font: MythTypography.caption
+                font.pixelSize: MythTypography.caption
                 color: MythColors.text2
                 Layout.fillWidth: true
                 Layout.topMargin: 24
@@ -305,7 +305,7 @@ Item {
             // SectionTag: MythChart — System Monitor
             Text {
                 text: "MythChart — System Monitor"
-                font: MythTypography.caption
+                font.pixelSize: MythTypography.caption
                 color: MythColors.text2
                 Layout.fillWidth: true
                 Layout.topMargin: 24

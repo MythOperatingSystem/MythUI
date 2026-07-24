@@ -15,6 +15,15 @@ qt_add_qml_module(MythUIDemoApp
     QML_FILES
         Main.qml
         Demo.qml
+        DesktopShell.qml
+        MythCommandOverlay.qml
+        ControlCenterOverlay.qml
+        NotificationOverlay.qml
+        pages/PageBadge.qml
+        pages/Glass.qml
+        pages/PageH1.qml
+        pages/PageSub.qml
+        pages/SectionTag.qml
         pages/CoverPage.qml
         pages/ProductPrinciplesPage.qml
         pages/BrandPage.qml

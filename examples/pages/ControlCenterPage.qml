@@ -35,26 +35,26 @@ Item {
                         Text {
                             text: "17"
                             color: MythColors.mythCyan
-                            font: MythTypography.caption
+                            font.pixelSize: MythTypography.caption
                         }
                         Text {
                             text: "Control Center"
                             color: MythColors.mythCyan
-                            font: MythTypography.caption
+                            font.pixelSize: MythTypography.caption
                         }
                     }
                 }
 
                 Text {
                     text: "Control Center"
-                    font: MythTypography.h1
+                    font.pixelSize: MythTypography.h1
                     color: MythColors.textPrimary
                     Layout.alignment: Qt.AlignHCenter
                 }
                 
                 Text {
                     text: "Quick controls, sliders, and system status — floating panel."
-                    font: MythTypography.body
+                    font.pixelSize: MythTypography.body
                     color: MythColors.textSecondary
                     Layout.alignment: Qt.AlignHCenter
                 }

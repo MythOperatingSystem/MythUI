@@ -35,20 +35,20 @@ Item {
                     Text {
                         text: "Core Components"
                         color: MythColors.text2
-                        font: MythTypography.body
+                        font.pixelSize: MythTypography.body
                     }
                 }
 
                 Text {
                     text: "Core Components"
                     color: MythColors.text
-                    font: MythTypography.h1
+                    font.pixelSize: MythTypography.h1
                 }
 
                 Text {
                     text: "Reusable primitives for all MythOS applications."
                     color: MythColors.text2
-                    font: MythTypography.body
+                    font.pixelSize: MythTypography.body
                 }
             }
 
@@ -62,7 +62,7 @@ Item {
                 Text {
                     text: "MythButton — All Variants & Sizes"
                     color: MythColors.cyan
-                    font: MythTypography.label
+                    font.pixelSize: MythTypography.label
                 }
 
                 MythCard {
@@ -108,7 +108,7 @@ Item {
                 Text {
                     text: "MythInput — All States"
                     color: MythColors.cyan
-                    font: MythTypography.label
+                    font.pixelSize: MythTypography.label
                 }
 
                 MythCard {
@@ -124,7 +124,7 @@ Item {
                         ColumnLayout {
                             spacing: 6
                             Layout.fillWidth: true
-                            Text { text: "Default"; color: MythColors.text2; font: MythTypography.body }
+                            Text { text: "Default"; color: MythColors.text2; font.pixelSize: MythTypography.body }
                             MythTextField {
                                 placeholderText: "Enter workspace name..."
                                 Layout.fillWidth: true
@@ -135,7 +135,7 @@ Item {
                         ColumnLayout {
                             spacing: 6
                             Layout.fillWidth: true
-                            Text { text: "Focused"; color: MythColors.text2; font: MythTypography.body }
+                            Text { text: "Focused"; color: MythColors.text2; font.pixelSize: MythTypography.body }
                             MythTextField {
                                 placeholderText: "Search commands..."
                                 text: "myth"
@@ -148,7 +148,7 @@ Item {
                         ColumnLayout {
                             spacing: 6
                             Layout.fillWidth: true
-                            Text { text: "Error"; color: MythColors.text2; font: MythTypography.body }
+                            Text { text: "Error"; color: MythColors.text2; font.pixelSize: MythTypography.body }
                             MythTextField {
                                 placeholderText: "API key..."
                                 text: "invalid-key-xxx"
@@ -159,7 +159,7 @@ Item {
                             Text {
                                 text: "Invalid API key format."
                                 color: MythColors.error
-                                font: MythTypography.body
+                                font.pixelSize: MythTypography.body
                             }
                         }
 
@@ -167,7 +167,7 @@ Item {
                         ColumnLayout {
                             spacing: 6
                             Layout.fillWidth: true
-                            Text { text: "Disabled"; color: MythColors.text2; font: MythTypography.body }
+                            Text { text: "Disabled"; color: MythColors.text2; font.pixelSize: MythTypography.body }
                             MythTextField {
                                 placeholderText: "System reserved"
                                 enabled: false
@@ -188,7 +188,7 @@ Item {
                 Text {
                     text: "MythBadge — All Variants"
                     color: MythColors.cyan
-                    font: MythTypography.label
+                    font.pixelSize: MythTypography.label
                 }
 
                 MythCard {
@@ -220,7 +220,7 @@ Item {
                 Text {
                     text: "MythNotification — All Types"
                     color: MythColors.cyan
-                    font: MythTypography.label
+                    font.pixelSize: MythTypography.label
                 }
 
                 ColumnLayout {
@@ -295,7 +295,7 @@ Item {
                 Text {
                     text: "MythKeyboard Shortcut Labels"
                     color: MythColors.cyan
-                    font: MythTypography.label
+                    font.pixelSize: MythTypography.label
                 }
 
                 MythCard {

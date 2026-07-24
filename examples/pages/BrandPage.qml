@@ -31,13 +31,13 @@ Item {
                         anchors.centerIn: parent
                         text: "02"
                         color: MythColors.cyan
-                        font: MythTypography.mono
+                        font.family: MythTypography.codeFont
                     }
                 }
                 Text {
                     text: "Brand"
                     color: MythColors.cyan
-                    font: MythTypography.label
+                    font.pixelSize: MythTypography.label
                 }
             }
 
@@ -45,14 +45,14 @@ Item {
             Text {
                 text: "Brand System"
                 color: MythColors.textPrimary
-                font: MythTypography.h1
+                font.pixelSize: MythTypography.h1
             }
 
             // PageSub
             Text {
                 text: "Identity, color palette, and brand applications for MythOS."
                 color: MythColors.textSecondary
-                font: MythTypography.body
+                font.pixelSize: MythTypography.body
                 Layout.maximumWidth: 600
                 wrapMode: Text.WordWrap
             }
@@ -63,7 +63,7 @@ Item {
             Text {
                 text: "LOGO SYSTEM"
                 color: MythColors.textMuted
-                font: MythTypography.mono
+                font.family: MythTypography.codeFont
             }
 
             GridLayout {
@@ -93,7 +93,7 @@ Item {
                         Text { 
                             text: "Primary Lockup"
                             color: MythColors.textSecondary
-                            font: MythTypography.monoSmall
+                            font.pixelSize: MythTypography.monoSmall
                             Layout.alignment: Qt.AlignHCenter 
                         }
                     }
@@ -119,7 +119,7 @@ Item {
                         Text { 
                             text: "Symbol Only"
                             color: MythColors.textSecondary
-                            font: MythTypography.monoSmall
+                            font.pixelSize: MythTypography.monoSmall
                             Layout.alignment: Qt.AlignHCenter 
                         }
                     }
@@ -145,7 +145,7 @@ Item {
                         Text { 
                             text: "Compact"
                             color: MythColors.textSecondary
-                            font: MythTypography.monoSmall
+                            font.pixelSize: MythTypography.monoSmall
                             Layout.alignment: Qt.AlignHCenter 
                         }
                     }
@@ -172,7 +172,7 @@ Item {
                         Text { 
                             text: "Small Scale"
                             color: MythColors.textSecondary
-                            font: MythTypography.monoSmall
+                            font.pixelSize: MythTypography.monoSmall
                             Layout.alignment: Qt.AlignHCenter 
                         }
                     }
@@ -183,7 +183,7 @@ Item {
             Text {
                 text: "COLOR PALETTE"
                 color: MythColors.textMuted
-                font: MythTypography.mono
+                font.family: MythTypography.codeFont
             }
 
             GridLayout {
@@ -217,8 +217,8 @@ Item {
                             Layout.bottomMargin: 8
                         }
                         Text { text: modelData.name; color: MythColors.textPrimary; font.bold: true; font.pixelSize: 13 }
-                        Text { text: modelData.hex; color: MythColors.cyan; font: MythTypography.monoSmall }
-                        Text { text: modelData.token; color: MythColors.textSecondary; font: MythTypography.monoSmall }
+                        Text { text: modelData.hex; color: MythColors.cyan; font.pixelSize: MythTypography.monoSmall }
+                        Text { text: modelData.token; color: MythColors.textSecondary; font.pixelSize: MythTypography.monoSmall }
                         Text { text: modelData.role; color: MythColors.textMuted; font.pixelSize: 11; Layout.topMargin: 1 }
                     }
                 }
@@ -257,8 +257,8 @@ Item {
                                 spacing: 2
                                 Layout.alignment: Qt.AlignVCenter
                                 Text { text: modelData.name; color: MythColors.textPrimary; font.bold: true; font.pixelSize: 13 }
-                                Text { text: modelData.hex; color: modelData.hex; font: MythTypography.monoSmall }
-                                Text { text: modelData.token; color: MythColors.textSecondary; font: MythTypography.monoSmall }
+                                Text { text: modelData.hex; color: modelData.hex; font.pixelSize: MythTypography.monoSmall }
+                                Text { text: modelData.token; color: MythColors.textSecondary; font.pixelSize: MythTypography.monoSmall }
                             }
                         }
                     }
@@ -269,7 +269,7 @@ Item {
             Text {
                 text: "BRAND APPLICATIONS"
                 color: MythColors.textMuted
-                font: MythTypography.mono
+                font.family: MythTypography.codeFont
             }
 
             GridLayout {
@@ -312,7 +312,7 @@ Item {
                             Text {
                                 text: modelData.label
                                 color: MythColors.textSecondary
-                                font: MythTypography.monoSmall
+                                font.pixelSize: MythTypography.monoSmall
                                 Layout.alignment: Qt.AlignHCenter
                             }
                         }

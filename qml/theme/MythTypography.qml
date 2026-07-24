@@ -36,6 +36,7 @@ QtObject {
     readonly property int labelLarge: 16
     readonly property int labelMedium: 14
     readonly property int labelSmall: 12
+    readonly property int label: 14
 
     // Caption & Code
     readonly property int caption: 12
@@ -54,4 +55,13 @@ QtObject {
     readonly property int weightMedium: Font.Medium
     readonly property int weightSemiBold: Font.DemiBold
     readonly property int weightBold: Font.Bold
+
+    // Backwards compatibility font aliases
+    readonly property string monospaceFont: codeFont
+    readonly property string sansFont: uiFont
+    readonly property string baseFontFamily: uiFont
+    readonly property string mono: codeFont
+
+    // Font object aliases (for pages that use MythTypography.mono as a font object)
+    readonly property var monoFont: ({family: codeFont, pixelSize: codeMedium})
 }

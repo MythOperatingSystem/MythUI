@@ -42,14 +42,14 @@ Item {
                     }
                     Text {
                         text: "Desktop Shell"
-                        font: MythTypography.h1
+                        font.pixelSize: MythTypography.h1
                         color: MythColors.textPrimary
                     }
                 }
 
                 Text {
                     text: "Top bar, wallpaper, dock, context menu, and workspace variants."
-                    font: MythTypography.body1
+                    font.pixelSize: MythTypography.body1
                     color: MythColors.textMuted
                 }
             }

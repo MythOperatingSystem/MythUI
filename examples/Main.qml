@@ -10,7 +10,7 @@ Window {
     title: "MythUI Component Showcase"
     color: MythColors.voidBlack
 
-    Demo {
+    DesktopShell {
         anchors.fill: parent
     }
 }

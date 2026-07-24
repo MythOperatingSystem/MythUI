@@ -74,20 +74,20 @@ Item {
                     Text {
                         text: "Design Tokens"
                         color: MythColors.cyan
-                        font: MythTypography.label
+                        font.pixelSize: MythTypography.label
                     }
                 }
 
                 Text {
                     text: "Design Tokens"
                     color: MythColors.text
-                    font: MythTypography.h1
+                    font.pixelSize: MythTypography.h1
                 }
 
                 Text {
                     text: "All spacing, radius, shadow, glow, blur, and motion primitives."
                     color: MythColors.text2
-                    font: MythTypography.body
+                    font.pixelSize: MythTypography.body
                 }
             }
 
@@ -97,7 +97,7 @@ Item {
                 Layout.topMargin: 24
                 text: "Spacing Scale — 8px grid"
                 color: MythColors.text2
-                font: MythTypography.label
+                font.pixelSize: MythTypography.label
             }
 
             Rectangle {
@@ -156,7 +156,7 @@ Item {
                 Layout.leftMargin: 32
                 text: "Border Radius"
                 color: MythColors.text2
-                font: MythTypography.label
+                font.pixelSize: MythTypography.label
             }
 
             Flow {
@@ -228,7 +228,7 @@ Item {
                     Text {
                         text: "Elevation & Shadow"
                         color: MythColors.text2
-                        font: MythTypography.label
+                        font.pixelSize: MythTypography.label
                     }
 
                     Repeater {
@@ -276,7 +276,7 @@ Item {
                     Text {
                         text: "Glow System"
                         color: MythColors.text2
-                        font: MythTypography.label
+                        font.pixelSize: MythTypography.label
                     }
 
                     Repeater {
@@ -361,7 +361,7 @@ Item {
                 Layout.leftMargin: 32
                 text: "Motion Tokens"
                 color: MythColors.text2
-                font: MythTypography.label
+                font.pixelSize: MythTypography.label
             }
 
             Flow {

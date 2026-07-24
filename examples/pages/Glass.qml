@@ -3,11 +3,7 @@ import QtQuick.Controls
 import MythUI 1.0
 
 Pane {
-    property int padding: 0
-    topPadding: padding
-    bottomPadding: padding
-    leftPadding: padding
-    rightPadding: padding
+    padding: 0
     
     background: Rectangle {
         color: MythColors.surface ? MythColors.surface : "#171A24"

@@ -125,9 +125,9 @@ Item {
                     width: 24; height: 24
                     radius: 4
                     color: MythColors.mythCyan
-                    Text { text: "22"; color: MythColors.voidBlack; anchors.centerIn: parent; font: MythTypography.bodySmall; font.bold: true }
+                    Text { text: "22"; color: MythColors.voidBlack; anchors.centerIn: parent; font.pixelSize: MythTypography.bodySmall; font.bold: true }
                 }
-                Text { text: "Myth Terminal"; color: MythColors.mythCyan; font: MythTypography.bodySmall; font.bold: true }
+                Text { text: "Myth Terminal"; color: MythColors.mythCyan; font.pixelSize: MythTypography.bodySmall; font.bold: true }
             }
 
             // PageH1
@@ -137,7 +137,7 @@ Item {
                 Layout.rightMargin: 40
                 text: "Myth Terminal"
                 color: MythColors.textPrimary
-                font: MythTypography.h1
+                font.pixelSize: MythTypography.h1
                 Layout.topMargin: 16
             }
 
@@ -148,7 +148,7 @@ Item {
                 Layout.rightMargin: 40
                 text: "Developer-focused terminal with AI assistance, tabs, and trust levels."
                 color: MythColors.textSecondary
-                font: MythTypography.body
+                font.pixelSize: MythTypography.body
                 wrapMode: Text.WordWrap
                 Layout.topMargin: 8
                 Layout.bottomMargin: 48
@@ -369,7 +369,7 @@ Item {
                 Layout.rightMargin: 40
                 text: "Command Trust Levels"
                 color: MythColors.textMuted
-                font: MythTypography.bodySmall
+                font.pixelSize: MythTypography.bodySmall
                 font.bold: true
                 Layout.bottomMargin: 10
             }

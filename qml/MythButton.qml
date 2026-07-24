@@ -6,6 +6,7 @@ Button {
     id: control
 
     property string variant: "primary" // primary, secondary, ghost, ai, danger, success
+    property string size: "md" // sm, md, lg
     property string iconSource: ""
     
     implicitHeight: 44

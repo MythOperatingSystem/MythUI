@@ -84,14 +84,14 @@ Item {
                     // PageH1
                     Text {
                         text: "Myth Hub"
-                        font: MythTypography.h1
+                        font.pixelSize: MythTypography.h1
                         color: MythColors.textPrimary
                     }
 
                     // PageSub
                     Text {
                         text: "System dashboard — live metrics, processes, and alerts."
-                        font: MythTypography.body
+                        font.pixelSize: MythTypography.body
                         color: MythColors.textSecondary
                     }
                 }

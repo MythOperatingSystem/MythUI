@@ -35,7 +35,7 @@ Item {
                         anchors.centerIn: parent
                         text: "01"
                         color: MythColors.mythCyan
-                        font: MythTypography.codeFont
+                        font.family: MythTypography.codeFont
                         font.pixelSize: 10
                     }
                 }
@@ -43,7 +43,7 @@ Item {
                 Text {
                     text: "PRODUCT PRINCIPLES"
                     color: MythColors.mythCyan
-                    font: MythTypography.uiFont
+                    font.family: MythTypography.uiFont
                     font.pixelSize: 12
                     font.weight: 600
                     font.capitalization: Font.AllUppercase
@@ -54,7 +54,7 @@ Item {
             Text {
                 text: "Product Principles"
                 color: MythColors.textPrimary
-                font: MythTypography.uiFont
+                font.family: MythTypography.uiFont
                 font.pixelSize: 32
                 font.weight: Font.Bold
             }
@@ -62,7 +62,7 @@ Item {
             Text {
                 text: "Ten principles that define every decision in MythOS design."
                 color: MythColors.textSecondary
-                font: MythTypography.uiFont
+                font.family: MythTypography.uiFont
                 font.pixelSize: 16
                 Layout.bottomMargin: 16
             }
@@ -106,13 +106,13 @@ Item {
                                     text: (index < 9 ? "0" + (index + 1) : (index + 1).toString())
                                     color: MythColors.mythCyan
                                     opacity: 0.7
-                                    font: MythTypography.codeFont
+                                    font.family: MythTypography.codeFont
                                     font.pixelSize: 10
                                 }
                                 Text {
                                     text: model.title
                                     color: MythColors.textPrimary
-                                    font: MythTypography.uiFont
+                                    font.family: MythTypography.uiFont
                                     font.pixelSize: 14
                                     font.weight: 600
                                 }
@@ -121,7 +121,7 @@ Item {
                             Text {
                                 text: model.desc
                                 color: MythColors.textSecondary
-                                font: MythTypography.uiFont
+                                font.family: MythTypography.uiFont
                                 font.pixelSize: 13
                                 Layout.fillWidth: true
                                 wrapMode: Text.WordWrap
@@ -154,7 +154,7 @@ Item {
                                         Text {
                                             text: "✓"
                                             color: MythColors.success
-                                            font: MythTypography.uiFont
+                                            font.family: MythTypography.uiFont
                                             font.pixelSize: 12
                                             Layout.alignment: Qt.AlignTop
                                             Layout.topMargin: 1
@@ -162,7 +162,7 @@ Item {
                                         Text {
                                             text: model.correct
                                             color: MythColors.textSecondary
-                                            font: MythTypography.uiFont
+                                            font.family: MythTypography.uiFont
                                             font.pixelSize: 12
                                             lineHeight: 1.5
                                             wrapMode: Text.WordWrap
@@ -192,7 +192,7 @@ Item {
                                         Text {
                                             text: "✕"
                                             color: MythColors.error
-                                            font: MythTypography.uiFont
+                                            font.family: MythTypography.uiFont
                                             font.pixelSize: 12
                                             Layout.alignment: Qt.AlignTop
                                             Layout.topMargin: 1
@@ -200,7 +200,7 @@ Item {
                                         Text {
                                             text: model.wrong
                                             color: MythColors.textSecondary
-                                            font: MythTypography.uiFont
+                                            font.family: MythTypography.uiFont
                                             font.pixelSize: 12
                                             lineHeight: 1.5
                                             wrapMode: Text.WordWrap

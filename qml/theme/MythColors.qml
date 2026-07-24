@@ -16,6 +16,7 @@ QtObject {
     readonly property color overlay: "#1D2130"
 
     // Primary Accent (Myth Cyan)
+    readonly property color cyan: "#00E5FF"
     readonly property color mythCyan: "#00E5FF"
     readonly property color cyanHover: "#33EBFF"
     readonly property color cyanPressed: "#00B8CC"
@@ -24,6 +25,7 @@ QtObject {
     readonly property color mythCyanGlow: Qt.rgba(0, 0.898, 1, 0.15)
 
     // AI Accent (Myth Purple)
+    readonly property color purple: "#8B5CFF"
     readonly property color mythPurple: "#8B5CFF"
     readonly property color purpleHover: "#A17DFF"
     readonly property color purplePressed: "#7042E6"
@@ -37,6 +39,11 @@ QtObject {
     readonly property color textMuted: "#697181"
     readonly property color textDisabled: "#464D5C"
     readonly property color textInverse: "#0D0E15"
+
+    // Backwards compatibility text aliases
+    readonly property color text1: textPrimary
+    readonly property color text2: textSecondary
+    readonly property color text3: textMuted
 
     // Semantic Colors
     readonly property color success: "#22C55E"

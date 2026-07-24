@@ -51,7 +51,7 @@ Item {
                         Text {
                             text: "10"
                             color: MythColors.mythCyan
-                            font: MythTypography.mono
+                            font.family: MythTypography.codeFont
                         }
                         Rectangle {
                             width: 1
@@ -61,20 +61,20 @@ Item {
                         Text {
                             text: "Boot Experience"
                             color: MythColors.textPrimary
-                            font: MythTypography.caption
+                            font.pixelSize: MythTypography.caption
                         }
                     }
                 }
 
                 Text {
                     text: "Boot Experience"
-                    font: MythTypography.h1
+                    font.pixelSize: MythTypography.h1
                     color: MythColors.textPrimary
                 }
                 
                 Text {
                     text: "3–5 second boot on capable hardware. Clean, silent, confident."
-                    font: MythTypography.body
+                    font.pixelSize: MythTypography.body
                     color: MythColors.textSecondary
                 }
             }
@@ -82,7 +82,7 @@ Item {
             // SectionTag: Boot Storyboard
             Text {
                 text: "Boot Storyboard"
-                font: MythTypography.h3
+                font.pixelSize: MythTypography.h3
                 color: MythColors.textPrimary
                 Layout.topMargin: 16
             }
@@ -116,7 +116,7 @@ Item {
                             anchors.centerIn: parent
                             text: frameNum
                             color: isSelected ? MythColors.mythCyan : MythColors.textSecondary
-                            font: MythTypography.mono
+                            font.family: MythTypography.codeFont
                         }
                         
                         MouseArea {
@@ -181,7 +181,7 @@ Item {
                         anchors.bottom: parent.bottom
                         anchors.bottomMargin: parent.height * 0.28
                         text: "READY"
-                        font: MythTypography.mono
+                        font.family: MythTypography.codeFont
                         font.pixelSize: 10
                         font.letterSpacing: 2
                         color: MythColors.mythCyan
@@ -193,7 +193,7 @@ Item {
                     Text {
                         anchors.centerIn: parent
                         text: "POST COMPLETE"
-                        font: MythTypography.mono
+                        font.family: MythTypography.codeFont
                         font.pixelSize: 11
                         font.letterSpacing: 1
                         color: "#333333"
@@ -243,7 +243,7 @@ Item {
                                 
                                 Text {
                                     text: modelData.num < 10 ? "0" + modelData.num : modelData.num
-                                    font: MythTypography.mono
+                                    font.family: MythTypography.codeFont
                                     font.pixelSize: 10
                                     color: root.currentFrame === modelData.num ? MythColors.mythCyan : MythColors.textMuted
                                 }
@@ -254,14 +254,14 @@ Item {
                                     
                                     Text {
                                         text: modelData.label
-                                        font: MythTypography.caption
+                                        font.pixelSize: MythTypography.caption
                                         font.bold: true
                                         color: root.currentFrame === modelData.num ? MythColors.textPrimary : MythColors.textSecondary
                                     }
                                     
                                     Text {
                                         text: modelData.desc
-                                        font: MythTypography.caption
+                                        font.pixelSize: MythTypography.caption
                                         color: MythColors.textMuted
                                         wrapMode: Text.WordWrap
                                         Layout.fillWidth: true
@@ -282,7 +282,7 @@ Item {
             // Fallback States Section
             Text {
                 text: "Fallback States"
-                font: MythTypography.h3
+                font.pixelSize: MythTypography.h3
                 color: MythColors.textPrimary
             }
             
@@ -343,7 +343,7 @@ Item {
                                     anchors.centerIn: parent
                                     text: modelData.label
                                     color: modelData.colorState
-                                    font: MythTypography.caption
+                                    font.pixelSize: MythTypography.caption
                                     font.bold: true
                                 }
                             }
@@ -351,7 +351,7 @@ Item {
                             Text {
                                 text: modelData.desc
                                 color: MythColors.textSecondary
-                                font: MythTypography.caption
+                                font.pixelSize: MythTypography.caption
                                 wrapMode: Text.WordWrap
                                 Layout.fillWidth: true
                             }

@@ -35,7 +35,7 @@ Item {
                         width: 24
                         height: 24
                         radius: 6
-                        color: Qt.alpha(MythColors.textPrimary, 0.1)
+                        color: Qt.rgba(MythColors.textPrimary.r, MythColors.textPrimary.g, MythColors.textPrimary.b, 0.1)
                         Text {
                             anchors.centerIn: parent
                             text: "18"
@@ -174,7 +174,7 @@ Item {
                                             width: 32
                                             height: 32
                                             radius: 8
-                                            color: Qt.alpha(modelData.color, 0.2)
+                                            color: Qt.rgba(modelData.color.r, modelData.color.g, modelData.color.b, 0.2)
                                             Layout.alignment: Qt.AlignTop
                                             Layout.topMargin: 2
 
